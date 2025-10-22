@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "types": ["node"],
+    "lib": ["ES2020"],
+    "skipLibCheck": true,
+    "module": "ESNext",
+    "moduleResolution": "bundler"
+  }
+}
