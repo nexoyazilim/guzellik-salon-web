@@ -1,0 +1,48 @@
+{
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "gallery": "Gallery",
+    "contact": "Contact",
+    "bookNow": "Book Now"
+  },
+  "hero": {
+    "title": "Discover Your Beauty",
+    "subtitle": "Experience luxury beauty treatments tailored to enhance your natural radiance",
+    "bookAppointment": "Book Appointment",
+    "exploreServices": "Explore Services"
+  },
+  "stats": {
+    "happyClients": "Happy Clients",
+    "expertStaff": "Expert Staff",
+    "services": "Services"
+  },
+  "services": {
+    "featuredTitle": "Our Featured Services",
+    "featuredSubtitle": "Discover our most popular treatments and transformations",
+    "viewAllServices": "View All Services"
+  },
+  "whyChooseUs": {
+    "title": "Why Choose Us",
+    "premiumQuality": {
+      "title": "Premium Quality",
+      "description": "We use only the finest products and techniques to ensure exceptional results"
+    },
+    "expertTeam": {
+      "title": "Expert Team",
+      "description": "Our experienced specialists bring years of expertise and passion to every treatment"
+    },
+    "quickEasy": {
+      "title": "Quick & Easy",
+      "description": "Book appointments easily and enjoy flexible scheduling that fits your lifestyle"
+    }
+  },
+  "cta": {
+    "title": "Ready to Transform?",
+    "subtitle": "Book your appointment today and experience the difference our expert team can make",
+    "bookNow": "Book Now"
+  },
+  "common": {
+    "salonName": "Güzellik Salonu"
+  }
+}
