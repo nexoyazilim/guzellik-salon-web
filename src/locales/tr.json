@@ -1,0 +1,48 @@
+{
+  "nav": {
+    "home": "Ana Sayfa",
+    "services": "Hizmetler",
+    "gallery": "Galeri",
+    "contact": "İletişim",
+    "bookNow": "Randevu Al"
+  },
+  "hero": {
+    "title": "Güzelliğinizi Keşfedin",
+    "subtitle": "Doğal ışıltınızı ortaya çıkarmak için tasarlanmış lüks güzellik tedavilerini deneyimleyin",
+    "bookAppointment": "Randevu Al",
+    "exploreServices": "Hizmetleri Keşfet"
+  },
+  "stats": {
+    "happyClients": "Mutlu Müşteri",
+    "expertStaff": "Uzman Personel",
+    "services": "Hizmet"
+  },
+  "services": {
+    "featuredTitle": "Öne Çıkan Hizmetlerimiz",
+    "featuredSubtitle": "En popüler tedavilerimizi ve dönüşümlerimizi keşfedin",
+    "viewAllServices": "Tüm Hizmetleri Gör"
+  },
+  "whyChooseUs": {
+    "title": "Neden Bizi Seçmelisiniz",
+    "premiumQuality": {
+      "title": "Premium Kalite",
+      "description": "Olağanüstü sonuçlar için sadece en kaliteli ürünleri ve teknikleri kullanıyoruz"
+    },
+    "expertTeam": {
+      "title": "Uzman Ekip",
+      "description": "Deneyimli uzmanlarımız her tedaviye yıllarca deneyim ve tutku getiriyor"
+    },
+    "quickEasy": {
+      "title": "Hızlı ve Kolay",
+      "description": "Randevularınızı kolayca alın ve yaşam tarzınıza uygun esnek programlama keyfini çıkarın"
+    }
+  },
+  "cta": {
+    "title": "Dönüşüme Hazır mısınız?",
+    "subtitle": "Bugün randevunuzu alın ve uzman ekibimizin yaratabileceği farkı deneyimleyin",
+    "bookNow": "Şimdi Randevu Al"
+  },
+  "common": {
+    "salonName": "Güzellik Salonu"
+  }
+}
