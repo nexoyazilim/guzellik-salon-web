@@ -39,7 +39,7 @@ export default function Booking() {
   }
 
   const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const date = e.target.value
+    const date = e.currentTarget.value
     setBookingData({ ...bookingData, date })
     if (date && bookingData.staff) {
       setAvailableSlots(getAvailableSlots(bookingData.staff, date))
@@ -52,7 +52,7 @@ export default function Booking() {
   }
 
   const handleContactChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target
+    const { name, value } = e.currentTarget
     setBookingData({ ...bookingData, [name]: value })
   }
 

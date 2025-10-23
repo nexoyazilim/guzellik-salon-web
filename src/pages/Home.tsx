@@ -113,9 +113,9 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                whileHover={{ 
-                  scale: 1.05, 
-                  rotateY: 5,
+                whileHover={{
+                  scale: 1.05,
+                  rotate: 5,
                   transition: { duration: 0.3 }
                 }}
                 className="service-card cursor-pointer flex flex-col"
