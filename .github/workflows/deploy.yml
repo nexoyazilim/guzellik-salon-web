@@ -26,13 +26,13 @@ jobs:
         with:
           node-version: '20'
           cache: 'npm'
-          cache-dependency-path: guzellik-salonu-web/package-lock.json
+          cache-dependency-path: package-lock.json
 
       - name: Install dependencies
-        run: cd guzellik-salonu-web && npm ci
+        run: npm ci
 
       - name: Build
-        run: cd guzellik-salonu-web && npm run build
+        run: npm run build
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -40,7 +40,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./guzellik-salonu-web/dist
+          path: ./dist
 
   deploy:
     environment:
