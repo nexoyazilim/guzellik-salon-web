@@ -12,7 +12,7 @@ import './i18n'
 function App() {
   return (
     <ThemeProvider>
-      <Router>
+      <Router basename={import.meta.env.BASE_URL}>
         <div className="flex flex-col min-h-screen bg-white dark:bg-slate-900 transition-colors duration-300">
           <Header />
           <main className="flex-1">
