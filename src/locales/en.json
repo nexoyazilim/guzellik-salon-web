@@ -44,5 +44,28 @@
   },
   "common": {
     "salonName": "Güzellik Salonu"
+  },
+  "pages": {
+    "services": {
+      "headerTitle": "Our Services",
+      "headerSubtitle": "Discover our complete range of beauty treatments"
+    },
+    "gallery": {
+      "headerTitle": "Our Gallery",
+      "headerSubtitle": "See the transformations our team has created"
+    },
+    "contact": {
+      "headerTitle": "Contact Us",
+      "headerSubtitle": "Get in touch with our beauty experts"
+    },
+    "booking": {
+      "headerTitle": "Book Appointment",
+      "headerSubtitle": "Secure your perfect beauty treatment"
+    }
+  },
+  "footer": {
+    "quickLinks": "Quick Links",
+    "contact": "Contact",
+    "followUs": "Follow Us"
   }
 }

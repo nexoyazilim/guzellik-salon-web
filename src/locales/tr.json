@@ -44,5 +44,28 @@
   },
   "common": {
     "salonName": "Güzellik Salonu"
+  },
+  "pages": {
+    "services": {
+      "headerTitle": "Hizmetlerimiz",
+      "headerSubtitle": "Tüm güzellik uygulamalarımızı keşfedin"
+    },
+    "gallery": {
+      "headerTitle": "Galeri",
+      "headerSubtitle": "Ekibimizin gerçekleştirdiği dönüşümleri görün"
+    },
+    "contact": {
+      "headerTitle": "İletişim",
+      "headerSubtitle": "Güzellik uzmanlarımızla iletişime geçin"
+    },
+    "booking": {
+      "headerTitle": "Randevu Al",
+      "headerSubtitle": "Size en uygun tedaviyi güvenle planlayın"
+    }
+  },
+  "footer": {
+    "quickLinks": "Hızlı Bağlantılar",
+    "contact": "İletişim",
+    "followUs": "Bizi Takip Edin"
   }
 }

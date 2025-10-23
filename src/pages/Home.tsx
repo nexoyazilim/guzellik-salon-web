@@ -103,6 +103,13 @@ export default function Home() {
             <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
               {t('services.featuredSubtitle')}
             </p>
+            <div className="mt-8 max-w-4xl mx-auto">
+              <img
+                src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg"
+                alt="Services overview"
+                className="w-full rounded-xl shadow-lg"
+              />
+            </div>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -259,6 +266,13 @@ export default function Home() {
         </div>
         
         <div className="max-w-4xl mx-auto text-center text-white relative z-10">
+          <div className="mb-8">
+            <img
+              src="https://images.pexels.com/photos/3992873/pexels-photo-3992873.jpeg"
+              alt="Ready to book"
+              className="w-full rounded-xl shadow-xl"
+            />
+          </div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

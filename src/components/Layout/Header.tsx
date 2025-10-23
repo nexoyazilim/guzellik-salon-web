@@ -1,15 +1,17 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { Menu, X, Wand2, Sun, Moon, Monitor } from 'lucide-react'
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
-import { useTheme } from '../../context/ThemeContext'
+import { switchLangPath, detectLangFromPath, localizedPath } from '../../routes'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [scrollY, setScrollY] = useState(0)
   const { t, i18n } = useTranslation()
-  const { theme, setTheme, actualTheme } = useTheme()
+  const navigate = useNavigate()
+  const location = useLocation()
+  const currentLang = detectLangFromPath(location.pathname)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,20 +26,11 @@ export default function Header() {
 
   const changeLanguage = (lng: string) => {
     i18n.changeLanguage(lng)
+    const next = switchLangPath(location.pathname, lng as 'en' | 'tr')
+    navigate(next)
   }
 
-  const getThemeIcon = () => {
-    switch (theme) {
-      case 'light':
-        return <Sun size={20} />
-      case 'dark':
-        return <Moon size={20} />
-      case 'system':
-        return <Monitor size={20} />
-      default:
-        return <Sun size={20} />
-    }
-  }
+  // Theme UI removed per requirements
 
   return (
     <motion.header
@@ -90,10 +83,10 @@ export default function Header() {
           transition={{ delay: 0.2 }}
         >
           {[
-            { to: '/', label: t('nav.home') },
-            { to: '/services', label: t('nav.services') },
-            { to: '/gallery', label: t('nav.gallery') },
-            { to: '/contact', label: t('nav.contact') },
+            { key: 'home', to: localizedPath(currentLang, 'home'), label: t('nav.home') },
+            { key: 'services', to: localizedPath(currentLang, 'services'), label: t('nav.services') },
+            { key: 'gallery', to: localizedPath(currentLang, 'gallery'), label: t('nav.gallery') },
+            { key: 'contact', to: localizedPath(currentLang, 'contact'), label: t('nav.contact') },
           ].map((link) => (
             <motion.div
               key={link.to}
@@ -113,12 +106,9 @@ export default function Header() {
             </motion.div>
           ))}
 
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Link
-              to="/booking"
+              to={localizedPath(currentLang, 'booking')}
               className="btn-primary shadow-lg shadow-rose-500/30 hover:shadow-rose-500/50 transition-all duration-300"
             >
               {t('nav.bookNow')}
@@ -154,22 +144,6 @@ export default function Header() {
                 🇺🇸
               </motion.button>
             </div>
-
-            {/* Theme Switcher */}
-            <motion.button
-              onClick={() => {
-                const themes: ('light' | 'dark' | 'system')[] = ['light', 'dark', 'system']
-                const currentIndex = themes.indexOf(theme)
-                const nextIndex = (currentIndex + 1) % themes.length
-                setTheme(themes[nextIndex])
-              }}
-              className="p-2 bg-white/20 dark:bg-slate-800/20 rounded-lg backdrop-blur-md text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              title={`Current theme: ${theme}`}
-            >
-              {getThemeIcon()}
-            </motion.button>
           </div>
         </motion.div>
 
@@ -199,10 +173,10 @@ export default function Header() {
       >
         <div className="backdrop-blur-xl bg-white/40 dark:bg-slate-800/40 border-b border-white/20 dark:border-gray-700 px-4 py-4 space-y-2">
           {[
-            { to: '/', label: t('nav.home') },
-            { to: '/services', label: t('nav.services') },
-            { to: '/gallery', label: t('nav.gallery') },
-            { to: '/contact', label: t('nav.contact') },
+            { key: 'home', to: localizedPath(currentLang, 'home'), label: t('nav.home') },
+            { key: 'services', to: localizedPath(currentLang, 'services'), label: t('nav.services') },
+            { key: 'gallery', to: localizedPath(currentLang, 'gallery'), label: t('nav.gallery') },
+            { key: 'contact', to: localizedPath(currentLang, 'contact'), label: t('nav.contact') },
           ].map((link) => (
             <motion.div
               key={link.to}
@@ -228,7 +202,7 @@ export default function Header() {
             whileHover={{ scale: 1.02 }}
           >
             <Link
-              to="/booking"
+              to={localizedPath(currentLang, 'booking')}
               onClick={() => setIsMenuOpen(false)}
               className="block btn-primary text-center py-3 rounded-lg shadow-lg shadow-rose-500/30 transition-all duration-300"
             >

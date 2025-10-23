@@ -1,7 +1,11 @@
 import { Facebook, Instagram, Twitter, MapPin, Phone, Mail } from 'lucide-react'
+import { Link, useLocation } from 'react-router-dom'
+import { detectLangFromPath, localizedPath } from '../../routes'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
+  const location = useLocation()
+  const lang = detectLangFromPath(location.pathname)
 
   return (
     <footer className="bg-gray-900 text-white mt-24">
@@ -22,24 +26,24 @@ export default function Footer() {
             <h4 className="font-semibold text-lg mb-4">Quick Links</h4>
             <ul className="space-y-2">
               <li>
-                <a href="/" className="text-gray-400 hover:text-rose-400 transition-colors">
+                <Link to={localizedPath(lang, 'home')} className="text-gray-400 hover:text-rose-400 transition-colors">
                   Home
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/services" className="text-gray-400 hover:text-rose-400 transition-colors">
+                <Link to={localizedPath(lang, 'services')} className="text-gray-400 hover:text-rose-400 transition-colors">
                   Services
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/booking" className="text-gray-400 hover:text-rose-400 transition-colors">
+                <Link to={localizedPath(lang, 'booking')} className="text-gray-400 hover:text-rose-400 transition-colors">
                   Book Appointment
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/gallery" className="text-gray-400 hover:text-rose-400 transition-colors">
+                <Link to={localizedPath(lang, 'gallery')} className="text-gray-400 hover:text-rose-400 transition-colors">
                   Gallery
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -67,22 +71,13 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold text-lg mb-4">Follow Us</h4>
             <div className="flex gap-4">
-              <a
-                href="#"
-                className="bg-rose-500 hover:bg-rose-600 w-10 h-10 rounded-full flex items-center justify-center transition-colors"
-              >
+              <a href="#" className="bg-rose-500 hover:bg-rose-600 w-10 h-10 rounded-full flex items-center justify-center transition-colors">
                 <Facebook size={20} />
               </a>
-              <a
-                href="#"
-                className="bg-lavender-500 hover:bg-lavender-600 w-10 h-10 rounded-full flex items-center justify-center transition-colors"
-              >
+              <a href="#" className="bg-rose-500 hover:bg-rose-600 w-10 h-10 rounded-full flex items-center justify-center transition-colors">
                 <Instagram size={20} />
               </a>
-              <a
-                href="#"
-                className="bg-rose-500 hover:bg-rose-600 w-10 h-10 rounded-full flex items-center justify-center transition-colors"
-              >
+              <a href="#" className="bg-rose-500 hover:bg-rose-600 w-10 h-10 rounded-full flex items-center justify-center transition-colors">
                 <Twitter size={20} />
               </a>
             </div>

@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X } from 'lucide-react'
 import { beforeAfterGallery } from '../data/beforeAfter'
+import { useTranslation } from 'react-i18next'
 
 interface SelectedImage {
   id: string
@@ -13,14 +14,22 @@ interface SelectedImage {
 export default function Gallery() {
   const [selectedImage, setSelectedImage] = useState<SelectedImage | null>(null)
   const [showAfter, setShowAfter] = useState(false)
+  const { t } = useTranslation()
 
   return (
     <div className="w-full">
       {/* Header */}
       <section className="section-padding bg-gradient-to-r from-rose-500 to-lavender-500">
         <div className="max-w-7xl mx-auto text-center text-white">
-          <h1 className="text-5xl md:text-6xl font-display font-bold mb-4">Our Gallery</h1>
-          <p className="text-xl opacity-90">See the transformations our team has created</p>
+          <h1 className="text-5xl md:text-6xl font-display font-bold mb-4">{t('pages.gallery.headerTitle')}</h1>
+          <p className="text-xl opacity-90">{t('pages.gallery.headerSubtitle')}</p>
+          <div className="mt-8 max-w-4xl mx-auto">
+            <img
+              src="https://images.pexels.com/photos/3993447/pexels-photo-3993447.jpeg"
+              alt="Gallery"
+              className="w-full rounded-xl shadow-xl"
+            />
+          </div>
         </div>
       </section>
 
@@ -96,7 +105,7 @@ export default function Gallery() {
 
               {/* Image Comparison */}
               <div className="p-8 bg-gradient-to-br from-rose-50 to-lavender-50">
-                <div className="relative w-full max-h-96">
+                <div className="relative w-full max-h-[70vh]">
                   {/* Before Image */}
                   <motion.div
                     initial={{ opacity: 1 }}
@@ -107,7 +116,7 @@ export default function Gallery() {
                     <img
                       src={selectedImage.before}
                       alt="Before"
-                      className="w-full rounded-lg shadow-lg"
+                      className="w-full rounded-lg shadow-lg object-contain max-h-[60vh]"
                     />
                     <p className="text-center mt-4 font-semibold text-gray-700">Before</p>
                   </motion.div>
@@ -122,7 +131,7 @@ export default function Gallery() {
                     <img
                       src={selectedImage.after}
                       alt="After"
-                      className="w-full rounded-lg shadow-lg"
+                      className="w-full rounded-lg shadow-lg object-contain max-h-[60vh]"
                     />
                     <p className="text-center mt-4 font-semibold text-gray-700">After</p>
                   </motion.div>

@@ -2,9 +2,17 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { services, serviceCategories, type Service } from '../data/services'
 import * as LucideIcons from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
+import { detectLangFromPath, localizedPath } from '../routes'
+import { useLocation } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 export default function Services() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
+  const navigate = useNavigate()
+  const location = useLocation()
+  const lang = detectLangFromPath(location.pathname)
+  const { t } = useTranslation()
 
   const filteredServices = selectedCategory
     ? services.filter(s => s.category === selectedCategory)
@@ -34,7 +42,7 @@ export default function Services() {
             transition={{ duration: 0.6 }}
             className="text-5xl md:text-6xl font-display font-bold mb-4 drop-shadow-lg"
           >
-            Our Services
+            {t('pages.services.headerTitle')}
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -42,8 +50,15 @@ export default function Services() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-xl opacity-90 drop-shadow-md"
           >
-            Discover our complete range of beauty treatments
+            {t('pages.services.headerSubtitle')}
           </motion.p>
+          <div className="mt-8 max-w-4xl mx-auto">
+            <img
+              src="https://images.pexels.com/photos/853427/pexels-photo-853427.jpeg"
+              alt="Services"
+              className="w-full rounded-xl shadow-xl"
+            />
+          </div>
         </div>
       </section>
 
@@ -127,9 +142,10 @@ export default function Services() {
                       <p className="text-sm text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-slate-600 px-2 py-1 rounded-full">{service.duration} minutes</p>
                     </div>
                     <motion.button 
-                      className="btn-secondary text-sm"
+                      className="px-4 py-2 rounded-lg text-sm font-semibold bg-rose-500 text-white hover:bg-rose-600"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
+                      onClick={() => navigate(localizedPath(lang, 'booking'))}
                     >
                       Book
                     </motion.button>

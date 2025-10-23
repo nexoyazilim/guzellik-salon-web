@@ -76,6 +76,13 @@ export default function Booking() {
         <div className="max-w-7xl mx-auto text-center text-white">
           <h1 className="text-5xl md:text-6xl font-display font-bold mb-4">Book Appointment</h1>
           <p className="text-xl opacity-90">Secure your perfect beauty treatment</p>
+          <div className="mt-8 max-w-4xl mx-auto">
+            <img
+              src="https://images.pexels.com/photos/3738347/pexels-photo-3738347.jpeg"
+              alt="Book appointment"
+              className="w-full rounded-xl shadow-xl"
+            />
+          </div>
         </div>
       </section>
 
