@@ -10,7 +10,6 @@ Modern, responsive ve kullanıcı dostu bir güzellik salonu web sitesi. React +
 * **Türkçe İçerik**: Tamamen Türkçe arayüz ve içerik
 * **SEO Uyumlu**: Arama motorları için optimize edilmiş yapı
 * **Çoklu Dil Desteği**: Türkçe ve İngilizce dil seçenekleri
-* **Dark Mode**: Koyu tema desteği
 
 ## 🛠️ Teknolojiler
 
