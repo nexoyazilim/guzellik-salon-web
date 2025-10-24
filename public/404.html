@@ -1,18 +1,3 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Redirecting...</title>
-    <script>
-      // Based on https://github.com/rafgraph/spa-github-pages
-      var segmentCount = 1; // repository pages
-      var l = window.location;
-      var repoBase = '/guzellik-salon-web';
-      var p = l.pathname.replace(new RegExp('^' + repoBase), '')
-      var newURL = l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') + repoBase + '/?p=' + p + '&q=' + (l.search ? l.search.slice(1).replace(/&/g, '~and~') : '') + l.hash;
-      window.location.replace(newURL);
-    </script>
-  </head>
-  <body>Redirecting...</body>
-  </html>
+<!doctype html>
+<meta http-equiv="refresh" content="0; url=/guzellik-salon-web/">
 

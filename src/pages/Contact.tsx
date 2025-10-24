@@ -1,8 +1,10 @@
 import { motion } from 'framer-motion'
 import { MapPin, Phone, Mail, Clock } from 'lucide-react'
 import { contactInfo, workingHours } from '../data/contact'
+import { useTranslation } from 'react-i18next'
 
 export default function Contact() {
+  const { t } = useTranslation()
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     // Demo only - no actual submission
@@ -12,10 +14,34 @@ export default function Contact() {
   return (
     <div className="w-full">
       {/* Header */}
-      <section className="section-padding bg-gradient-to-r from-rose-500 to-lavender-500">
-        <div className="max-w-7xl mx-auto text-center text-white">
-          <h1 className="text-5xl md:text-6xl font-display font-bold mb-4">Contact Us</h1>
-          <p className="text-xl opacity-90">Get in touch with our beauty experts</p>
+      <section className="relative py-24 md:py-32 px-4 md:px-8 bg-gradient-to-br from-rose-500 via-rose-600 to-purple-500 overflow-hidden">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFgL-wS7kAsiIrAZPQKm0t14y8LFCe4MrLUGsApX8OHajq0_KepudfSIhrNeeS6FP0_rU-6xIJAdKebTF2c2IjmnXFQOQkhqZP4pqBgmolu22Z_PqW0mvFm6gbuTa4fl9-_bRlT1iuMye3gxsu-imLKNnBkf0VytVkUo2o1cP0wNv4McuDcncAdVOeag-4jJp0WCjtL72N3fdF-EFAJMElNnsUhxnq_cf28v_TUdRXKt7DdmnVnWBKyEphLivufBfPwzN4ySFUGHxK" alt="Contact" className="absolute inset-0 w-full h-full object-cover opacity-40" />
+        <div className="absolute inset-0 bg-black/20" />
+        {/* Background decorative elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-16 left-16 w-32 h-32 bg-white/10 rounded-full floating-element"></div>
+          <div className="absolute bottom-16 right-16 w-24 h-24 bg-white/10 rounded-full floating-element"></div>
+          <div className="absolute top-1/2 left-1/4 w-20 h-20 bg-white/10 rounded-full floating-element"></div>
+          <div className="absolute top-1/3 right-1/4 w-16 h-16 bg-white/10 rounded-full floating-element"></div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto text-center text-white relative z-10">
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-5xl md:text-6xl font-display font-bold mb-4 drop-shadow-lg"
+          >
+            {t('contact.title', 'Contact Us')}
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-xl opacity-90 drop-shadow-md"
+          >
+            {t('contact.subtitle', 'Get in touch with our beauty experts')}
+          </motion.p>
         </div>
       </section>
 
@@ -29,7 +55,7 @@ export default function Contact() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-4xl font-display font-bold mb-8">Get In Touch</h2>
+              <h2 className="text-4xl font-display font-bold mb-8">{t('contact.getInTouch', 'Get In Touch')}</h2>
 
               <div className="space-y-8">
                 {/* Address */}
@@ -40,7 +66,7 @@ export default function Contact() {
                     </div>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-lg mb-2">Location</h3>
+                    <h3 className="font-semibold text-lg mb-2">{t('contact.location', 'Location')}</h3>
                     <p className="text-gray-600">{contactInfo.address}</p>
                     <p className="text-gray-600">{contactInfo.city}</p>
                   </div>
@@ -54,7 +80,7 @@ export default function Contact() {
                     </div>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-lg mb-2">Phone</h3>
+                    <h3 className="font-semibold text-lg mb-2">{t('contact.phone', 'Phone')}</h3>
                     <a
                       href={`tel:${contactInfo.phone}`}
                       className="text-rose-600 hover:text-rose-700 font-semibold"
@@ -72,7 +98,7 @@ export default function Contact() {
                     </div>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-lg mb-2">Email</h3>
+                    <h3 className="font-semibold text-lg mb-2">{t('contact.email', 'Email')}</h3>
                     <a
                       href={`mailto:${contactInfo.email}`}
                       className="text-rose-600 hover:text-rose-700 font-semibold"
@@ -90,13 +116,13 @@ export default function Contact() {
                     </div>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-lg mb-3">Working Hours</h3>
+                    <h3 className="font-semibold text-lg mb-3">{t('contact.workingHours', 'Working Hours')}</h3>
                     <div className="space-y-2">
                       {workingHours.map((hour, index) => (
                         <div key={index} className="flex justify-between">
-                          <span className="text-gray-600">{hour.day}</span>
+                          <span className="text-gray-600">{t(`days.${hour.day}`)}</span>
                           <span className={hour.closed ? 'text-gray-400' : 'font-semibold'}>
-                            {hour.closed ? 'Closed' : `${hour.open} - ${hour.close}`}
+                            {hour.closed ? t('days.closed') : `${hour.open} - ${hour.close}`}
                           </span>
                         </div>
                       ))}
@@ -114,56 +140,56 @@ export default function Contact() {
             >
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label className="block text-sm font-semibold mb-2">Name</label>
+                  <label className="block text-sm font-semibold mb-2">{t('contact.form.name', 'Name')}</label>
                   <input
                     type="text"
                     required
                     className="w-full p-3 border-2 border-gray-200 rounded-lg focus:border-rose-500 focus:outline-none transition-colors"
-                    placeholder="Your name"
+                    placeholder={t('contact.form.namePh', 'Your name')}
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold mb-2">Email</label>
+                  <label className="block text-sm font-semibold mb-2">{t('contact.form.email', 'Email')}</label>
                   <input
                     type="email"
                     required
                     className="w-full p-3 border-2 border-gray-200 rounded-lg focus:border-rose-500 focus:outline-none transition-colors"
-                    placeholder="your@email.com"
+                    placeholder={t('contact.form.emailPh', 'your@email.com')}
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold mb-2">Phone</label>
+                  <label className="block text-sm font-semibold mb-2">{t('contact.form.phone', 'Phone')}</label>
                   <input
                     type="tel"
                     className="w-full p-3 border-2 border-gray-200 rounded-lg focus:border-rose-500 focus:outline-none transition-colors"
-                    placeholder="+90 XXX XXX XXXX"
+                    placeholder={t('contact.form.phonePh', '+90 XXX XXX XXXX')}
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold mb-2">Subject</label>
+                  <label className="block text-sm font-semibold mb-2">{t('contact.form.subject', 'Subject')}</label>
                   <input
                     type="text"
                     required
                     className="w-full p-3 border-2 border-gray-200 rounded-lg focus:border-rose-500 focus:outline-none transition-colors"
-                    placeholder="What is this about?"
+                    placeholder={t('contact.form.subjectPh', 'What is this about?')}
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold mb-2">Message</label>
+                  <label className="block text-sm font-semibold mb-2">{t('contact.form.message', 'Message')}</label>
                   <textarea
                     rows={5}
                     required
                     className="w-full p-3 border-2 border-gray-200 rounded-lg focus:border-rose-500 focus:outline-none transition-colors resize-none"
-                    placeholder="Your message..."
+                    placeholder={t('contact.form.messagePh', 'Your message...')}
                   ></textarea>
                 </div>
 
                 <button type="submit" className="w-full btn-primary text-lg">
-                  Send Message
+                  {t('contact.form.send', 'Send Message')}
                 </button>
               </form>
             </motion.div>
@@ -185,14 +211,14 @@ export default function Contact() {
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding bg-gradient-to-r from-rose-500 to-lavender-500">
-        <div className="max-w-4xl mx-auto text-center text-white">
-          <h2 className="text-4xl font-display font-bold mb-6">Ready to Book?</h2>
-          <p className="text-xl mb-8 opacity-90">
-            Visit us today or schedule your appointment online
-          </p>
-          <a href="/booking" className="inline-block px-8 py-4 bg-white text-rose-600 font-bold rounded-lg hover:bg-gray-100 transition-colors">
-            Book Appointment
+      <section className="relative section-padding bg-gradient-to-r from-rose-500 to-lavender-500 overflow-hidden">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgRr3sWaS_LLFfd1Bdeu-xw6A4osJ1lT5NK0-ZYEMiPxBNgwTLxZ98d1eCsc-J0NQRIFaluwX-nAWmOPqywBSRhKGfutduMMHYBNVPqGKLctvu8o4jg6VUUc8hRu5MV7fk4HdD19-93FpXYjynFaYASyMl9rfbUxbh5EBcnXZ5Hyeab9CADG8B5WtwqRxfBe10hs6_5OxPn5ovzq8gRHuTB0XgL8D76M2sAu9QivNFvT95zD0mX9Kvv_E9SvvrneZ8AAkJUBQEkBKq" alt="Ready to Book" className="absolute inset-0 w-full h-full object-cover opacity-30" />
+        <div className="absolute inset-0 bg-black/20" />
+        <div className="max-w-4xl mx-auto text-center text-white relative z-10">
+          <h2 className="text-4xl font-display font-bold mb-6">{t('cta.title')}</h2>
+          <p className="text-xl mb-8 opacity-90">{t('cta.subtitle')}</p>
+          <a href="#/tr/randevu" className="inline-block px-8 py-4 bg-white text-rose-600 font-bold rounded-lg hover:bg-gray-100 transition-colors">
+            {t('cta.bookNow')}
           </a>
         </div>
       </section>

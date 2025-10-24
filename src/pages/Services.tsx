@@ -1,38 +1,33 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { services, serviceCategories, type Service } from '../data/services'
-import * as LucideIcons from 'lucide-react'
-import { useNavigate } from 'react-router-dom'
-import { detectLangFromPath, localizedPath } from '../routes'
-import { useLocation } from 'react-router-dom'
+import { useParams, useNavigate, Link } from 'react-router-dom'
+import { normalizeLng, pathFor } from '../utils/paths'
 import { useTranslation } from 'react-i18next'
 
 export default function Services() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
+  const params = useParams()
+  const lng = normalizeLng(params.lng)
   const navigate = useNavigate()
-  const location = useLocation()
-  const lang = detectLangFromPath(location.pathname)
   const { t } = useTranslation()
 
   const filteredServices = selectedCategory
     ? services.filter(s => s.category === selectedCategory)
     : services
 
-  const getIcon = (iconName: string) => {
-    const Icons = LucideIcons as unknown as Record<string, React.ComponentType<{ size: number }>>
-    const IconComponent = Icons[iconName.charAt(0).toUpperCase() + iconName.slice(1)]
-    return IconComponent ? <IconComponent size={32} /> : null
-  }
-
   return (
     <div className="w-full">
       {/* Header */}
-      <section className="section-padding bg-gradient-to-br from-rose-500 via-rose-600 to-purple-500 relative overflow-hidden">
+      <section className="relative py-24 md:py-32 px-4 md:px-8 bg-gradient-to-br from-rose-500 via-rose-600 to-purple-500 overflow-hidden">
+        <img src="https://images.pexels.com/photos/3992873/pexels-photo-3992873.jpeg" alt="Services" className="absolute inset-0 w-full h-full object-cover opacity-40" />
+        <div className="absolute inset-0 bg-black/20" />
         {/* Background decorative elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 left-20 w-40 h-40 bg-white/10 rounded-full floating-element"></div>
-          <div className="absolute bottom-20 right-20 w-32 h-32 bg-white/10 rounded-full floating-element"></div>
-          <div className="absolute top-1/2 left-1/3 w-24 h-24 bg-white/10 rounded-full floating-element"></div>
+          <div className="absolute top-16 left-16 w-32 h-32 bg-white/10 rounded-full floating-element"></div>
+          <div className="absolute bottom-16 right-16 w-24 h-24 bg-white/10 rounded-full floating-element"></div>
+          <div className="absolute top-1/2 left-1/4 w-20 h-20 bg-white/10 rounded-full floating-element"></div>
+          <div className="absolute top-1/3 right-1/4 w-16 h-16 bg-white/10 rounded-full floating-element"></div>
         </div>
         
         <div className="max-w-7xl mx-auto text-center text-white relative z-10">
@@ -42,7 +37,7 @@ export default function Services() {
             transition={{ duration: 0.6 }}
             className="text-5xl md:text-6xl font-display font-bold mb-4 drop-shadow-lg"
           >
-            {t('pages.services.headerTitle')}
+            {t('servicesPage.title', 'Our Services')}
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -50,15 +45,8 @@ export default function Services() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-xl opacity-90 drop-shadow-md"
           >
-            {t('pages.services.headerSubtitle')}
+            {t('servicesPage.subtitle', 'Discover our complete range of beauty treatments')}
           </motion.p>
-          <div className="mt-8 max-w-4xl mx-auto">
-            <img
-              src="https://images.pexels.com/photos/853427/pexels-photo-853427.jpeg"
-              alt="Services"
-              className="w-full rounded-xl shadow-xl"
-            />
-          </div>
         </div>
       </section>
 
@@ -80,10 +68,10 @@ export default function Services() {
               className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
                 selectedCategory === null
                   ? 'bg-gradient-to-r from-rose-500 to-rose-600 text-white shadow-lg shadow-rose-500/30'
-                  : 'bg-white/10 dark:bg-slate-800/10 text-gray-700 dark:text-gray-300 hover:bg-white/20 dark:hover:bg-slate-800/20 backdrop-blur-sm border border-white/20 dark:border-gray-600'
+                  : 'bg-white/10 text-gray-700 hover:bg-white/20 backdrop-blur-sm border border-white/20'
               }`}
             >
-              All Services
+              {t('servicesPage.all', 'All Services')}
             </motion.button>
             {serviceCategories.map(cat => (
               <motion.button
@@ -94,10 +82,10 @@ export default function Services() {
                 className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 capitalize ${
                   selectedCategory === cat.id
                     ? 'bg-gradient-to-r from-rose-500 to-rose-600 text-white shadow-lg shadow-rose-500/30'
-                    : 'bg-white/10 dark:bg-slate-800/10 text-gray-700 dark:text-gray-300 hover:bg-white/20 dark:hover:bg-slate-800/20 backdrop-blur-sm border border-white/20 dark:border-gray-600'
+                    : 'bg-white/10 text-gray-700 hover:bg-white/20 backdrop-blur-sm border border-white/20'
                 }`}
               >
-                {cat.name}
+                {t(`categories.${cat.id}`, cat.name)}
               </motion.button>
             ))}
           </motion.div>
@@ -118,7 +106,7 @@ export default function Services() {
                 }}
                 className="service-card"
               >
-                <div className="h-48 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 dark:from-slate-600 dark:to-slate-700 relative">
+                <div className="h-48 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 relative">
                   <img 
                     src={service.image}
                     alt={service.name}
@@ -127,27 +115,20 @@ export default function Services() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
                 <div className="p-8">
-                  <motion.div 
-                    className="mb-4 inline-block p-3 bg-gradient-to-br from-rose-500 to-purple-500 rounded-xl text-white shadow-lg"
-                    whileHover={{ scale: 1.1, rotate: 10 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    {getIcon(service.icon)}
-                  </motion.div>
-                  <h3 className="text-2xl font-semibold mb-2 text-gray-900 dark:text-gray-100">{service.name}</h3>
-                  <p className="text-gray-600 dark:text-gray-400 mb-4 text-sm">{service.description}</p>
+                  <h3 className="text-2xl font-semibold mb-2 text-gray-900">{t(`servicesData.${service.id}.name`, service.name)}</h3>
+                  <p className="text-gray-600 mb-4 text-sm">{t(`servicesData.${service.id}.description`, service.description)}</p>
                   <div className="flex justify-between items-center">
                     <div>
                       <p className="text-3xl font-bold bg-gradient-to-r from-rose-600 to-rose-500 bg-clip-text text-transparent">${service.price}</p>
-                      <p className="text-sm text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-slate-600 px-2 py-1 rounded-full">{service.duration} minutes</p>
+                      <p className="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">{service.duration} {t('common.minutes')}</p>
                     </div>
                     <motion.button 
-                      className="px-4 py-2 rounded-lg text-sm font-semibold bg-rose-500 text-white hover:bg-rose-600"
+                      className="btn-primary text-sm"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      onClick={() => navigate(localizedPath(lang, 'booking'))}
+                      onClick={() => navigate(pathFor(lng, 'booking'))}
                     >
-                      Book
+                      {t('common.book', 'Book')}
                     </motion.button>
                   </div>
                 </div>
@@ -158,7 +139,7 @@ export default function Services() {
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding bg-gradient-to-br from-rose-50 to-purple-50 dark:from-slate-800 dark:to-slate-700 relative overflow-hidden">
+      <section className="section-padding bg-gradient-to-br from-rose-50 to-purple-50 relative overflow-hidden">
         {/* Background decorative elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-10 right-10 w-32 h-32 bg-gradient-to-br from-rose-200 to-rose-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 floating-element"></div>
@@ -173,16 +154,16 @@ export default function Services() {
             viewport={{ once: true }}
             className="section-title"
           >
-            Ready to Transform?
+            {t('servicesPage.ctaTitle', 'Ready to Transform?')}
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
-            className="text-xl text-gray-600 dark:text-gray-400 mb-8"
+            className="text-xl text-gray-600 mb-8"
           >
-            Choose your favorite service and book your appointment today
+            {t('servicesPage.ctaSubtitle', 'Choose your favorite service and book your appointment today')}
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -192,9 +173,9 @@ export default function Services() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <a href="/booking" className="btn-primary text-lg">
-              Book Appointment
-            </a>
+            <Link to={pathFor(lng, 'booking')} className="btn-primary text-lg">
+              {t('hero.bookAppointment')}
+            </Link>
           </motion.div>
         </div>
       </section>

@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
+import { HashRouter as Router, Routes, Route, Navigate, Outlet, useParams } from 'react-router-dom'
 import Header from './components/Layout/Header'
 import Footer from './components/Layout/Footer'
 import Home from './pages/Home'
@@ -7,36 +7,63 @@ import Booking from './pages/Booking'
 import Contact from './pages/Contact'
 import Gallery from './pages/Gallery'
 import './i18n'
-import { slugsByLang } from './routes'
+import { useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
+import { slugs, normalizeLng } from './utils/paths'
 import ScrollToTop from './components/ScrollToTop'
 
-function App() {
+function LanguageLayout() {
+  const params = useParams()
+  const { i18n } = useTranslation()
+  const lng = normalizeLng(params.lng)
+
+  useEffect(() => {
+    if (i18n.language !== lng) i18n.changeLanguage(lng)
+  }, [lng, i18n])
+
   return (
-    <Router basename={import.meta.env.BASE_URL}>
+    <div className="flex flex-col min-h-screen bg-white">
+      <Header />
+      <main className="flex-1">
+        <Outlet />
+      </main>
+      <Footer />
+    </div>
+  )
+}
+
+function LanguageIndexRedirect() {
+  const params = useParams()
+  const lng = normalizeLng(params.lng)
+  return <Navigate to={slugs[lng].home} replace />
+}
+
+function App() {
+  const defaultLng: 'tr' | 'en' = 'tr'
+  return (
+    <Router>
       <ScrollToTop />
-      <div className="flex flex-col min-h-screen bg-white">
-        <Header />
-        <main className="flex-1">
-          <Routes>
-            {/* EN routes */}
-            <Route path={slugsByLang.en.home} element={<Home />} />
-            <Route path={slugsByLang.en.services} element={<Services />} />
-            <Route path={slugsByLang.en.booking} element={<Booking />} />
-            <Route path={slugsByLang.en.contact} element={<Contact />} />
-            <Route path={slugsByLang.en.gallery} element={<Gallery />} />
-
-            {/* TR routes */}
-            <Route path={slugsByLang.tr.services} element={<Services />} />
-            <Route path={slugsByLang.tr.booking} element={<Booking />} />
-            <Route path={slugsByLang.tr.contact} element={<Contact />} />
-            <Route path={slugsByLang.tr.gallery} element={<Gallery />} />
-
-            {/* Fallback */}
-            <Route path="*" element={<Navigate to={slugsByLang.en.home} replace />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
+      <Routes>
+        <Route path="/" element={<Navigate to={`/${defaultLng}/${slugs[defaultLng].home}`} replace />} />
+        <Route path=":lng" element={<LanguageLayout />}> 
+          {/* Index under /:lng -> redirect to localized home */}
+          <Route index element={<LanguageIndexRedirect />} />
+          {/* English slugs */}
+          <Route path={slugs.en.home} element={<Home />} />
+          <Route path={slugs.en.services} element={<Services />} />
+          <Route path={slugs.en.gallery} element={<Gallery />} />
+          <Route path={slugs.en.contact} element={<Contact />} />
+          <Route path={slugs.en.booking} element={<Booking />} />
+          {/* Turkish slugs */}
+          <Route path={slugs.tr.home} element={<Home />} />
+          <Route path={slugs.tr.services} element={<Services />} />
+          <Route path={slugs.tr.gallery} element={<Gallery />} />
+          <Route path={slugs.tr.contact} element={<Contact />} />
+          <Route path={slugs.tr.booking} element={<Booking />} />
+        </Route>
+        {/* Fallback */}
+        <Route path="*" element={<Navigate to={`/${defaultLng}/${slugs[defaultLng].home}`} replace />} />
+      </Routes>
     </Router>
   )
 }

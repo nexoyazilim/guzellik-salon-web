@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { services } from '../data/services'
 import { staff, getAvailableSlots } from '../data/staff'
 import { CheckCircle } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 
 interface BookingData {
   service: string
@@ -15,6 +16,7 @@ interface BookingData {
 }
 
 export default function Booking() {
+  const { t } = useTranslation()
   const [step, setStep] = useState(1)
   const [bookingData, setBookingData] = useState<BookingData>({
     service: '',
@@ -72,17 +74,34 @@ export default function Booking() {
   return (
     <div className="w-full">
       {/* Header */}
-      <section className="section-padding bg-gradient-to-r from-rose-500 to-lavender-500">
-        <div className="max-w-7xl mx-auto text-center text-white">
-          <h1 className="text-5xl md:text-6xl font-display font-bold mb-4">Book Appointment</h1>
-          <p className="text-xl opacity-90">Secure your perfect beauty treatment</p>
-          <div className="mt-8 max-w-4xl mx-auto">
-            <img
-              src="https://images.pexels.com/photos/3738347/pexels-photo-3738347.jpeg"
-              alt="Book appointment"
-              className="w-full rounded-xl shadow-xl"
-            />
-          </div>
+      <section className="relative py-24 md:py-32 px-4 md:px-8 bg-gradient-to-br from-rose-500 via-rose-600 to-purple-500 overflow-hidden">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAslLELjwTownnBypGVeTRY_RYAIviKdZW-7tGtF8occutHXC3Y8frl1GBXASCG8YKbrHBO1tKn_RzePiB0nj5o9uSobs_iMu1a5tGifnlcWVSxpRRePUSrBzchxZnr_Buf6JsI5h_8D5-Rq0QanZ3QMUK6PSmwWxIueEURru-IW6lTNnAOXXK2OLQ7SUKvvVC7N8B3lZ_6zWOANZHmLuWkHSl_L2Lhw5jAyDRODJZU_1TTx9ZPylgvCU7yWNX76UJYZX7QWQ6vmECB" alt="Book" className="absolute inset-0 w-full h-full object-cover opacity-40" />
+        <div className="absolute inset-0 bg-black/20" />
+        {/* Background decorative elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-16 left-16 w-32 h-32 bg-white/10 rounded-full floating-element"></div>
+          <div className="absolute bottom-16 right-16 w-24 h-24 bg-white/10 rounded-full floating-element"></div>
+          <div className="absolute top-1/2 left-1/4 w-20 h-20 bg-white/10 rounded-full floating-element"></div>
+          <div className="absolute top-1/3 right-1/4 w-16 h-16 bg-white/10 rounded-full floating-element"></div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto text-center text-white relative z-10">
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-5xl md:text-6xl font-display font-bold mb-4 drop-shadow-lg"
+          >
+            {t('booking.title', 'Book Appointment')}
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-xl opacity-90 drop-shadow-md"
+          >
+            {t('booking.subtitle', 'Secure your perfect beauty treatment')}
+          </motion.p>
         </div>
       </section>
 
@@ -106,7 +125,7 @@ export default function Booking() {
               {/* Step 1: Service Selection */}
               {step === 1 && (
                 <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-                  <h2 className="text-3xl font-bold mb-8">Select a Service</h2>
+                  <h2 className="text-3xl font-bold mb-8">{t('booking.selectService', 'Select a Service')}</h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {services.map(service => (
                       <button
@@ -114,8 +133,8 @@ export default function Booking() {
                         onClick={() => handleServiceSelect(service.id)}
                         className="p-6 border-2 border-gray-200 rounded-lg hover:border-rose-500 hover:bg-rose-50 transition-colors text-left"
                       >
-                        <h3 className="font-semibold text-lg">{service.name}</h3>
-                        <p className="text-gray-600 text-sm mt-2">{service.description}</p>
+                        <h3 className="font-semibold text-lg">{t(`servicesData.${service.id}.name`, service.name)}</h3>
+                        <p className="text-gray-600 text-sm mt-2">{t(`servicesData.${service.id}.description`, service.description)}</p>
                         <div className="flex justify-between items-center mt-4">
                           <span className="text-rose-600 font-bold">${service.price}</span>
                           <span className="text-gray-500 text-sm">{service.duration}min</span>
@@ -129,8 +148,8 @@ export default function Booking() {
               {/* Step 2: Staff Selection */}
               {step === 2 && (
                 <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-                  <h2 className="text-3xl font-bold mb-2">Select a Specialist</h2>
-                  <p className="text-gray-600 mb-8">Service: {selectedService?.name}</p>
+                  <h2 className="text-3xl font-bold mb-2">{t('booking.selectStaff', 'Select a Specialist')}</h2>
+                  <p className="text-gray-600 mb-8">{t('booking.serviceLabel', 'Service')}: {selectedService ? t(`servicesData.${selectedService.id}.name`, selectedService.name) : ''}</p>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {staff.map(member => (
                       <button
@@ -144,8 +163,8 @@ export default function Booking() {
                           className="w-24 h-24 rounded-full mx-auto mb-4 object-cover"
                         />
                         <h3 className="font-semibold text-lg">{member.name}</h3>
-                        <p className="text-rose-600 text-sm mb-3">{member.title}</p>
-                        <p className="text-gray-600 text-sm">{member.bio}</p>
+                        <p className="text-rose-600 text-sm mb-3">{t(`staffData.${member.id}.title`)}</p>
+                        <p className="text-gray-600 text-sm">{t(`staffData.${member.id}.bio`)}</p>
                       </button>
                     ))}
                   </div>
@@ -153,7 +172,7 @@ export default function Booking() {
                     onClick={() => setStep(1)}
                     className="mt-8 btn-outline"
                   >
-                    Back
+                    {t('common.back')}
                   </button>
                 </motion.div>
               )}
@@ -161,13 +180,13 @@ export default function Booking() {
               {/* Step 3: Date & Time Selection */}
               {step === 3 && (
                 <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-                  <h2 className="text-3xl font-bold mb-2">Select Date & Time</h2>
+                  <h2 className="text-3xl font-bold mb-2">{t('booking.selectDateTime', 'Select Date & Time')}</h2>
                   <p className="text-gray-600 mb-8">
-                    With {selectedStaff?.name} for {selectedService?.name}
+                    {t('booking.withStaff', 'With')} {selectedStaff?.name} {t('booking.forService', 'for')} {selectedService ? t(`servicesData.${selectedService.id}.name`, selectedService.name) : ''}
                   </p>
 
                   <div className="mb-8">
-                    <label className="block text-sm font-semibold mb-2">Date</label>
+                    <label className="block text-sm font-semibold mb-2">{t('booking.date', 'Date')}</label>
                     <input
                       type="date"
                       value={bookingData.date}
@@ -179,7 +198,7 @@ export default function Booking() {
 
                   {bookingData.date && availableSlots.length > 0 && (
                     <div>
-                      <label className="block text-sm font-semibold mb-4">Available Times</label>
+                      <label className="block text-sm font-semibold mb-4">{t('booking.availableTimes', 'Available Times')}</label>
                       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
                         {availableSlots.map(slot => (
                           <button
@@ -202,7 +221,7 @@ export default function Booking() {
                     onClick={() => setStep(2)}
                     className="mt-8 btn-outline"
                   >
-                    Back
+                    {t('common.back')}
                   </button>
                 </motion.div>
               )}
@@ -210,10 +229,10 @@ export default function Booking() {
               {/* Step 4: Contact Information */}
               {step === 4 && (
                 <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-                  <h2 className="text-3xl font-bold mb-8">Your Information</h2>
+                  <h2 className="text-3xl font-bold mb-8">{t('booking.yourInfo', 'Your Information')}</h2>
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div>
-                      <label className="block text-sm font-semibold mb-2">Name *</label>
+                      <label className="block text-sm font-semibold mb-2">{t('booking.name', 'Name')} *</label>
                       <input
                         type="text"
                         name="name"
@@ -221,11 +240,11 @@ export default function Booking() {
                         onChange={handleContactChange}
                         required
                         className="w-full p-3 border-2 border-gray-200 rounded-lg focus:border-rose-500 focus:outline-none"
-                        placeholder="Your name"
+                        placeholder={t('booking.namePlaceholder', 'Your name')}
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-semibold mb-2">Email *</label>
+                      <label className="block text-sm font-semibold mb-2">{t('booking.email', 'Email')} *</label>
                       <input
                         type="email"
                         name="email"
@@ -233,11 +252,11 @@ export default function Booking() {
                         onChange={handleContactChange}
                         required
                         className="w-full p-3 border-2 border-gray-200 rounded-lg focus:border-rose-500 focus:outline-none"
-                        placeholder="your@email.com"
+                        placeholder={t('booking.emailPlaceholder', 'your@email.com')}
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-semibold mb-2">Phone *</label>
+                      <label className="block text-sm font-semibold mb-2">{t('booking.phone', 'Phone')} *</label>
                       <input
                         type="tel"
                         name="phone"
@@ -245,19 +264,19 @@ export default function Booking() {
                         onChange={handleContactChange}
                         required
                         className="w-full p-3 border-2 border-gray-200 rounded-lg focus:border-rose-500 focus:outline-none"
-                        placeholder="+90 XXX XXX XXXX"
+                        placeholder={t('booking.phonePlaceholder', '+90 XXX XXX XXXX')}
                       />
                     </div>
 
                     {/* Summary */}
                     <div className="bg-gradient-to-br from-rose-50 to-lavender-50 p-6 rounded-lg mt-8">
-                      <h3 className="font-bold mb-4">Booking Summary</h3>
+                      <h3 className="font-bold mb-4">{t('booking.summary', 'Booking Summary')}</h3>
                       <div className="space-y-2 text-sm">
-                        <p>Service: <span className="font-semibold">{selectedService?.name}</span></p>
-                        <p>Specialist: <span className="font-semibold">{selectedStaff?.name}</span></p>
-                        <p>Date: <span className="font-semibold">{bookingData.date}</span></p>
-                        <p>Time: <span className="font-semibold">{bookingData.time}</span></p>
-                        <p className="border-t pt-2 mt-2">Total: <span className="font-bold text-rose-600">${selectedService?.price}</span></p>
+                        <p>{t('booking.serviceLabel', 'Service')}: <span className="font-semibold">{selectedService ? t(`servicesData.${selectedService.id}.name`, selectedService.name) : ''}</span></p>
+                        <p>{t('booking.staffLabel', 'Specialist')}: <span className="font-semibold">{selectedStaff?.name}</span></p>
+                        <p>{t('booking.date', 'Date')}: <span className="font-semibold">{bookingData.date}</span></p>
+                        <p>{t('booking.time', 'Time')}: <span className="font-semibold">{bookingData.time}</span></p>
+                        <p className="border-t pt-2 mt-2">{t('booking.total', 'Total')}: <span className="font-bold text-rose-600">${selectedService?.price}</span></p>
                       </div>
                     </div>
 
@@ -267,13 +286,13 @@ export default function Booking() {
                         onClick={() => setStep(3)}
                         className="flex-1 btn-outline"
                       >
-                        Back
+                        {t('common.back', 'Back')}
                       </button>
                       <button
                         type="submit"
                         className="flex-1 btn-primary"
                       >
-                        Confirm Booking
+                        {t('booking.confirm', 'Confirm Booking')}
                       </button>
                     </div>
                   </form>
@@ -287,9 +306,9 @@ export default function Booking() {
               className="text-center py-12"
             >
               <CheckCircle className="w-20 h-20 text-green-500 mx-auto mb-6" />
-              <h2 className="text-3xl font-bold mb-4">Booking Confirmed!</h2>
-              <p className="text-gray-600 mb-2">Thank you for booking with us</p>
-              <p className="text-gray-600">A confirmation email has been sent to {bookingData.email}</p>
+              <h2 className="text-3xl font-bold mb-4">{t('booking.confirmed', 'Booking Confirmed!')}</h2>
+              <p className="text-gray-600 mb-2">{t('booking.thanks', 'Thank you for booking with us')}</p>
+              <p className="text-gray-600">{t('booking.emailSent', 'A confirmation email has been sent to')} {bookingData.email}</p>
             </motion.div>
           )}
         </div>

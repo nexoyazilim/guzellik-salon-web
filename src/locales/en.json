@@ -43,29 +43,168 @@
     "bookNow": "Book Now"
   },
   "common": {
-    "salonName": "Güzellik Salonu"
+    "salonName": "Güzellik Salonu",
+    "book": "Book",
+    "back": "Back"
   },
-  "pages": {
-    "services": {
-      "headerTitle": "Our Services",
-      "headerSubtitle": "Discover our complete range of beauty treatments"
-    },
-    "gallery": {
-      "headerTitle": "Our Gallery",
-      "headerSubtitle": "See the transformations our team has created"
-    },
-    "contact": {
-      "headerTitle": "Contact Us",
-      "headerSubtitle": "Get in touch with our beauty experts"
-    },
-    "booking": {
-      "headerTitle": "Book Appointment",
-      "headerSubtitle": "Secure your perfect beauty treatment"
+  "servicesPage": {
+    "title": "Our Services",
+    "subtitle": "Discover our complete range of beauty treatments",
+    "all": "All Services",
+    "ctaTitle": "Ready to Transform?",
+    "ctaSubtitle": "Choose your favorite service and book your appointment today"
+  },
+  "categories": {
+    "hair": "Hair",
+    "makeup": "Makeup",
+    "skincare": "Skincare",
+    "massage": "Massage"
+  },
+  "booking": {
+    "title": "Book Appointment",
+    "subtitle": "Secure your perfect beauty treatment",
+    "selectService": "Select a Service",
+    "selectStaff": "Select a Specialist",
+    "serviceLabel": "Service",
+    "staffLabel": "Specialist",
+    "selectDateTime": "Select Date & Time",
+    "date": "Date",
+    "availableTimes": "Available Times",
+    "yourInfo": "Your Information",
+    "email": "Email",
+    "phone": "Phone",
+    "summary": "Booking Summary",
+    "time": "Time",
+    "total": "Total",
+    "confirm": "Confirm Booking",
+    "confirmed": "Booking Confirmed!",
+    "thanks": "Thank you for booking with us",
+    "emailSent": "A confirmation email has been sent to",
+    "withStaff": "With",
+    "forService": "for",
+    "namePlaceholder": "Your name",
+    "emailPlaceholder": "your@email.com",
+    "phonePlaceholder": "+90 XXX XXX XXXX"
+  },
+  
+  "gallery": {
+    "title": "Our Gallery",
+    "subtitle": "See the transformations our team has created",
+    "before": "Before",
+    "after": "After",
+    "showBefore": "Show Before",
+    "showAfter": "Show After"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Get in touch with our beauty experts",
+    "getInTouch": "Get In Touch",
+    "location": "Location",
+    "phone": "Phone",
+    "email": "Email",
+    "workingHours": "Working Hours",
+    "form": {
+      "name": "Name",
+      "namePh": "Your name",
+      "email": "Email",
+      "emailPh": "your@email.com",
+      "phone": "Phone",
+      "phonePh": "+90 XXX XXX XXXX",
+      "subject": "Subject",
+      "subjectPh": "What is this about?",
+      "message": "Message",
+      "messagePh": "Your message...",
+      "send": "Send Message"
     }
-  },
+  }
+  ,
   "footer": {
     "quickLinks": "Quick Links",
+    "followUs": "Follow Us",
+    "brandDescription": "Your destination for beauty, wellness, and self-care excellence.",
     "contact": "Contact",
-    "followUs": "Follow Us"
+    "cityCountry": "Istanbul, Turkey",
+    "allRights": "All rights reserved."
+  },
+  "servicesData": {
+    "hair-1": { "name": "Haircut & Styling", "description": "Professional haircut with personalized styling consultation" },
+    "hair-2": { "name": "Hair Coloring", "description": "Full or partial hair coloring with premium products" },
+    "hair-3": { "name": "Keratin Treatment", "description": "Smoothing and nourishing treatment for silky hair" },
+    "hair-4": { "name": "Balayage Highlights", "description": "Hand-painted highlights for natural-looking dimension" },
+    "makeup-1": { "name": "Bridal Makeup", "description": "Elegant makeup for your special day" },
+    "makeup-2": { "name": "Party Makeup", "description": "Bold and glamorous makeup for events" },
+    "makeup-3": { "name": "Natural Makeup", "description": "Fresh, natural-looking makeup for everyday" },
+    "makeup-4": { "name": "Eyebrow Shaping", "description": "Professional eyebrow design and tinting" },
+    "skin-1": { "name": "Facial Treatment", "description": "Deep cleansing and rejuvenating facial" },
+    "skin-2": { "name": "Hydration Therapy", "description": "Intensive hydration for glowing skin" },
+    "skin-3": { "name": "Microdermabrasion", "description": "Gentle exfoliation for smooth, radiant skin" },
+    "massage-1": { "name": "Swedish Massage", "description": "Relaxing full-body massage" },
+    "massage-2": { "name": "Deep Tissue Massage", "description": "Therapeutic massage for muscle tension" },
+    "massage-3": { "name": "Facial Massage", "description": "Relaxing facial and neck massage" }
+  },
+  "staffData": {
+    "staff-1": {
+      "title": "Hair Specialist",
+      "specialties": ["Hair Coloring", "Balayage", "Keratin Treatment", "Haircut & Styling"],
+      "bio": "With 8 years of experience in hair design, Ayşe specializes in creative color work and transformative haircuts."
+    },
+    "staff-2": {
+      "title": "Makeup Artist",
+      "specialties": ["Bridal Makeup", "Party Makeup", "Eyebrow Shaping"],
+      "bio": "Expert makeup artist with a passion for enhancing natural beauty. Specializes in bridal and event makeup."
+    },
+    "staff-3": {
+      "title": "Skin Care Specialist",
+      "specialties": ["Facial Treatment", "Hydration Therapy", "Microdermabrasion"],
+      "bio": "Certified skincare specialist dedicated to revealing your skin's natural radiance with premium treatments."
+    },
+    "staff-4": {
+      "title": "Massage Therapist",
+      "specialties": ["Swedish Massage", "Deep Tissue Massage", "Facial Massage"],
+      "bio": "Holistic massage therapist helping clients relax and rejuvenate with therapeutic techniques."
+    }
+  },
+  "galleryData": {
+    "ba-1": {
+      "title": "Transformation Balayage",
+      "description": "Beautiful balayage highlights for dimensional color"
+    },
+    "ba-2": {
+      "title": "Bridal Glow",
+      "description": "Elegant bridal makeup with radiant glow"
+    },
+    "ba-3": {
+      "title": "Skin Radiance",
+      "description": "Hydration therapy for glowing complexion"
+    },
+    "ba-4": {
+      "title": "Pixie Cut Chic",
+      "description": "Modern pixie cut with style"
+    },
+    "ba-5": {
+      "title": "Party Glam",
+      "description": "Glamorous party makeup look"
+    },
+    "ba-6": {
+      "title": "Clear Complexion",
+      "description": "Facial treatment for clear, radiant skin"
+    }
+  },
+  "days": {
+    "monday": "Monday",
+    "tuesday": "Tuesday",
+    "wednesday": "Wednesday",
+    "thursday": "Thursday",
+    "friday": "Friday",
+    "saturday": "Saturday",
+    "sunday": "Sunday",
+    "closed": "Closed"
+  },
+  "common": {
+    "salonName": "Güzellik Salonu",
+    "book": "Book",
+    "back": "Back",
+    "minutes": "minutes",
+    "name": "Name"
   }
 }

@@ -28,11 +28,11 @@ export const contactInfo: ContactInfo = {
 }
 
 export const workingHours: WorkingHours[] = [
-  { day: 'Monday', open: '09:00', close: '19:00', closed: false },
-  { day: 'Tuesday', open: '09:00', close: '19:00', closed: false },
-  { day: 'Wednesday', open: '09:00', close: '19:00', closed: false },
-  { day: 'Thursday', open: '09:00', close: '21:00', closed: false },
-  { day: 'Friday', open: '09:00', close: '21:00', closed: false },
-  { day: 'Saturday', open: '10:00', close: '20:00', closed: false },
-  { day: 'Sunday', open: '00:00', close: '00:00', closed: true },
+  { day: 'monday', open: '09:00', close: '19:00', closed: false },
+  { day: 'tuesday', open: '09:00', close: '19:00', closed: false },
+  { day: 'wednesday', open: '09:00', close: '19:00', closed: false },
+  { day: 'thursday', open: '09:00', close: '21:00', closed: false },
+  { day: 'friday', open: '09:00', close: '21:00', closed: false },
+  { day: 'saturday', open: '10:00', close: '20:00', closed: false },
+  { day: 'sunday', open: '00:00', close: '00:00', closed: true },
 ]

@@ -26,7 +26,7 @@
   }
 
   .btn-outline {
-    @apply px-6 py-3 border-2 border-rose-500 text-rose-500 font-semibold rounded-lg hover:bg-rose-50 transition-colors duration-300;
+    @apply px-6 py-3 border-2 border-rose-500 text-rose-500 font-semibold rounded-lg hover:bg-rose-50 dark:hover:bg-slate-800 transition-colors duration-300;
   }
 
   .section-padding {
@@ -44,8 +44,8 @@
   /* Glassmorphism effects for hero text */
   .glassmorphism-hero {
     background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 12px;
     padding: 1.5rem 2rem;
@@ -61,6 +61,20 @@
     border-radius: 8px;
     padding: 1.5rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+
+  /* Floating animation for decorative elements */
+  .floating-element {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
   }
 }
 

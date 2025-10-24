@@ -1,17 +1,18 @@
-import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { Menu, X, Wand2, Sun, Moon, Monitor } from 'lucide-react'
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
+import { Menu, X } from 'lucide-react'
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
-import { switchLangPath, detectLangFromPath, localizedPath } from '../../routes'
+import { normalizeLng, pathFor, slugs } from '../../utils/paths'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [scrollY, setScrollY] = useState(0)
   const { t, i18n } = useTranslation()
+  const params = useParams()
   const navigate = useNavigate()
   const location = useLocation()
-  const currentLang = detectLangFromPath(location.pathname)
+  const currentLng = normalizeLng(params.lng)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,17 +25,19 @@ export default function Header() {
 
   const isScrolled = scrollY > 50
 
-  const changeLanguage = (lng: string) => {
-    i18n.changeLanguage(lng)
-    const next = switchLangPath(location.pathname, lng as 'en' | 'tr')
-    navigate(next)
+  const changeLanguage = (lng: 'en' | 'tr') => {
+    if (i18n.language !== lng) i18n.changeLanguage(lng)
+    const parts = location.pathname.split('/').filter(Boolean)
+    const currentSlug = parts[1] || slugs[currentLng].home
+    const routeKey = (Object.keys(slugs.en) as (keyof typeof slugs.en)[]).find(k => slugs.en[k] === currentSlug || slugs.tr[k] === currentSlug) || 'home'
+    navigate(pathFor(lng, routeKey), { replace: true })
   }
 
-  // Theme UI removed per requirements
+  // theme removed
 
   return (
     <motion.header
-      className="sticky top-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md"
+      className="sticky top-0 z-50 bg-white/80 backdrop-blur-md"
       style={{
         WebkitBackdropFilter: isScrolled ? 'blur(10px)' : 'blur(5px)',
       }}
@@ -51,21 +54,21 @@ export default function Header() {
       {/* Subtle gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-white/0 pointer-events-none" />
 
-      <nav className="relative max-w-7xl mx-auto px-4 py-4 flex items-center justify-between border-b border-gray-200 dark:border-gray-700">
+      <nav className="relative max-w-7xl mx-auto px-4 py-4 flex items-center justify-between border-b border-gray-200">
         <motion.div
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <Link to="/" className="flex items-center gap-2 group">
+          <Link to={pathFor(currentLng, 'home')} className="flex items-center gap-2 group">
             <motion.div
-              className="w-10 h-10 bg-gradient-to-br from-rose-500 to-rose-600 rounded-full flex items-center justify-center shadow-lg shadow-rose-500/30"
+              className="w-8 h-8 flex items-center justify-center"
               whileHover={{ scale: 1.1, rotate: 5 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Wand2 size={24} className="text-white" />
+              <img src={import.meta.env.BASE_URL + 'favicon.svg'} alt="Logo" className="w-8 h-8" />
             </motion.div>
             <motion.span
-              className="hidden md:inline font-display font-bold text-2xl text-rose-700 dark:text-rose-300"
+              className="hidden md:inline font-display font-bold text-2xl text-rose-700"
               initial={{ opacity: 0.7 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.1 }}
@@ -83,10 +86,10 @@ export default function Header() {
           transition={{ delay: 0.2 }}
         >
           {[
-            { key: 'home', to: localizedPath(currentLang, 'home'), label: t('nav.home') },
-            { key: 'services', to: localizedPath(currentLang, 'services'), label: t('nav.services') },
-            { key: 'gallery', to: localizedPath(currentLang, 'gallery'), label: t('nav.gallery') },
-            { key: 'contact', to: localizedPath(currentLang, 'contact'), label: t('nav.contact') },
+            { to: pathFor(currentLng, 'home'), label: t('nav.home') },
+            { to: pathFor(currentLng, 'services'), label: t('nav.services') },
+            { to: pathFor(currentLng, 'gallery'), label: t('nav.gallery') },
+            { to: pathFor(currentLng, 'contact'), label: t('nav.contact') },
           ].map((link) => (
             <motion.div
               key={link.to}
@@ -95,7 +98,7 @@ export default function Header() {
             >
               <Link
                 to={link.to}
-                className="text-gray-700 dark:text-gray-300 font-semibold transition-colors duration-300 relative group"
+                className="text-gray-700 font-semibold transition-colors duration-300 relative group"
               >
                 {link.label}
                 <motion.span
@@ -106,25 +109,26 @@ export default function Header() {
             </motion.div>
           ))}
 
-          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
             <Link
-              to={localizedPath(currentLang, 'booking')}
+              to={pathFor(currentLng, 'booking')}
               className="btn-primary shadow-lg shadow-rose-500/30 hover:shadow-rose-500/50 transition-all duration-300"
             >
               {t('nav.bookNow')}
             </Link>
           </motion.div>
-
-          {/* Language and Theme Switchers */}
+          {/* Language Switcher */}
           <div className="hidden md:flex items-center gap-3">
-            {/* Language Switcher */}
-            <div className="flex items-center gap-1 bg-white/20 dark:bg-slate-800/20 rounded-lg p-1 backdrop-blur-md">
+            <div className="flex items-center gap-1 bg-white/20 rounded-lg p-1 backdrop-blur-md">
               <motion.button
                 onClick={() => changeLanguage('tr')}
                 className={`px-3 py-1 rounded-md text-sm font-medium transition-all duration-200 ${
                   i18n.language === 'tr'
                     ? 'bg-rose-500 text-white shadow-md'
-                    : 'text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200'
+                    : 'text-gray-600 hover:text-gray-800'
                 }`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -136,7 +140,7 @@ export default function Header() {
                 className={`px-3 py-1 rounded-md text-sm font-medium transition-all duration-200 ${
                   i18n.language === 'en'
                     ? 'bg-rose-500 text-white shadow-md'
-                    : 'text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200'
+                    : 'text-gray-600 hover:text-gray-800'
                 }`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -171,12 +175,12 @@ export default function Header() {
         transition={{ duration: 0.3 }}
         className="md:hidden overflow-hidden"
       >
-        <div className="backdrop-blur-xl bg-white/40 dark:bg-slate-800/40 border-b border-white/20 dark:border-gray-700 px-4 py-4 space-y-2">
+        <div className="backdrop-blur-xl bg-white/40 border-b border-white/20 px-4 py-4 space-y-2">
           {[
-            { key: 'home', to: localizedPath(currentLang, 'home'), label: t('nav.home') },
-            { key: 'services', to: localizedPath(currentLang, 'services'), label: t('nav.services') },
-            { key: 'gallery', to: localizedPath(currentLang, 'gallery'), label: t('nav.gallery') },
-            { key: 'contact', to: localizedPath(currentLang, 'contact'), label: t('nav.contact') },
+            { to: pathFor(currentLng, 'home'), label: t('nav.home') },
+            { to: pathFor(currentLng, 'services'), label: t('nav.services') },
+            { to: pathFor(currentLng, 'gallery'), label: t('nav.gallery') },
+            { to: pathFor(currentLng, 'contact'), label: t('nav.contact') },
           ].map((link) => (
             <motion.div
               key={link.to}
@@ -188,7 +192,7 @@ export default function Header() {
               <Link
                 to={link.to}
                 onClick={() => setIsMenuOpen(false)}
-                className="block text-gray-700 dark:text-gray-300 hover:text-rose-500 font-semibold py-2 px-3 rounded-lg hover:bg-white/30 dark:hover:bg-slate-700/30 transition-all duration-300"
+                className="block text-gray-700 hover:text-rose-500 font-semibold py-2 px-3 rounded-lg hover:bg-white/30 transition-all duration-300"
               >
                 {link.label}
               </Link>
@@ -202,7 +206,7 @@ export default function Header() {
             whileHover={{ scale: 1.02 }}
           >
             <Link
-              to={localizedPath(currentLang, 'booking')}
+              to={pathFor(currentLng, 'booking')}
               onClick={() => setIsMenuOpen(false)}
               className="block btn-primary text-center py-3 rounded-lg shadow-lg shadow-rose-500/30 transition-all duration-300"
             >
@@ -210,21 +214,21 @@ export default function Header() {
             </Link>
           </motion.div>
 
-          {/* Mobile Language and Theme Switchers */}
+          {/* Mobile Language Switcher */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.2, delay: 0.2 }}
-            className="flex items-center justify-center gap-4 pt-4 border-t border-white/20 dark:border-gray-700"
+            className="flex items-center justify-center gap-4 pt-4 border-t border-white/20"
           >
             {/* Language Switcher */}
-            <div className="flex items-center gap-1 bg-white/20 dark:bg-slate-800/20 rounded-lg p-1 backdrop-blur-md">
+            <div className="flex items-center gap-1 bg-white/20 rounded-lg p-1 backdrop-blur-md">
               <motion.button
                 onClick={() => changeLanguage('tr')}
                 className={`px-3 py-1 rounded-md text-sm font-medium transition-all duration-200 ${
                   i18n.language === 'tr'
                     ? 'bg-rose-500 text-white shadow-md'
-                    : 'text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200'
+                    : 'text-gray-600 hover:text-gray-800'
                 }`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -236,7 +240,7 @@ export default function Header() {
                 className={`px-3 py-1 rounded-md text-sm font-medium transition-all duration-200 ${
                   i18n.language === 'en'
                     ? 'bg-rose-500 text-white shadow-md'
-                    : 'text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200'
+                    : 'text-gray-600 hover:text-gray-800'
                 }`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -244,22 +248,6 @@ export default function Header() {
                 🇺🇸
               </motion.button>
             </div>
-
-            {/* Theme Switcher */}
-            <motion.button
-              onClick={() => {
-                const themes: ('light' | 'dark' | 'system')[] = ['light', 'dark', 'system']
-                const currentIndex = themes.indexOf(theme)
-                const nextIndex = (currentIndex + 1) % themes.length
-                setTheme(themes[nextIndex])
-              }}
-              className="p-2 bg-white/20 dark:bg-slate-800/20 rounded-lg backdrop-blur-md text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              title={`Current theme: ${theme}`}
-            >
-              {getThemeIcon()}
-            </motion.button>
           </motion.div>
         </div>
       </motion.div>

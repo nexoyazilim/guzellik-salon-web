@@ -43,29 +43,168 @@
     "bookNow": "Şimdi Randevu Al"
   },
   "common": {
-    "salonName": "Güzellik Salonu"
+    "salonName": "Güzellik Salonu",
+    "book": "Randevu Al",
+    "back": "Geri"
   },
-  "pages": {
-    "services": {
-      "headerTitle": "Hizmetlerimiz",
-      "headerSubtitle": "Tüm güzellik uygulamalarımızı keşfedin"
-    },
-    "gallery": {
-      "headerTitle": "Galeri",
-      "headerSubtitle": "Ekibimizin gerçekleştirdiği dönüşümleri görün"
-    },
-    "contact": {
-      "headerTitle": "İletişim",
-      "headerSubtitle": "Güzellik uzmanlarımızla iletişime geçin"
-    },
-    "booking": {
-      "headerTitle": "Randevu Al",
-      "headerSubtitle": "Size en uygun tedaviyi güvenle planlayın"
+  "servicesPage": {
+    "title": "Hizmetlerimiz",
+    "subtitle": "Güzellik tedavilerimizin tamamını keşfedin",
+    "all": "Tüm Hizmetler",
+    "ctaTitle": "Dönüşüme Hazır mısınız?",
+    "ctaSubtitle": "Favori hizmetinizi seçin ve bugün randevunuzu alın"
+  },
+  "categories": {
+    "hair": "Saç",
+    "makeup": "Makyaj",
+    "skincare": "Cilt Bakımı",
+    "massage": "Masaj"
+  },
+  "booking": {
+    "title": "Randevu Al",
+    "subtitle": "Mükemmel güzellik tedavinizi güvenceye alın",
+    "selectService": "Hizmet Seçin",
+    "selectStaff": "Uzman Seçin",
+    "serviceLabel": "Hizmet",
+    "staffLabel": "Uzman",
+    "selectDateTime": "Tarih ve Saat Seçin",
+    "date": "Tarih",
+    "availableTimes": "Uygun Saatler",
+    "yourInfo": "Bilgileriniz",
+    "email": "E-posta",
+    "phone": "Telefon",
+    "summary": "Randevu Özeti",
+    "time": "Saat",
+    "total": "Toplam",
+    "confirm": "Randevuyu Onayla",
+    "confirmed": "Randevu Onaylandı!",
+    "thanks": "Bizimle randevu aldığınız için teşekkürler",
+    "emailSent": "Onay e-postası gönderildi:",
+    "withStaff": "İle",
+    "forService": "için",
+    "namePlaceholder": "Adınız",
+    "emailPlaceholder": "eposta@ornek.com",
+    "phonePlaceholder": "+90 XXX XXX XXXX"
+  },
+  
+  "gallery": {
+    "title": "Galerimiz",
+    "subtitle": "Ekibimizin gerçekleştirdiği dönüşümleri görün",
+    "before": "Öncesi",
+    "after": "Sonrası",
+    "showBefore": "Öncesini Göster",
+    "showAfter": "Sonrasını Göster"
+  },
+  "contact": {
+    "title": "İletişim",
+    "subtitle": "Güzellik uzmanlarımızla iletişime geçin",
+    "getInTouch": "İletişime Geçin",
+    "location": "Konum",
+    "phone": "Telefon",
+    "email": "E-posta",
+    "workingHours": "Çalışma Saatleri",
+    "form": {
+      "name": "Ad Soyad",
+      "namePh": "Adınız",
+      "email": "E-posta",
+      "emailPh": "eposta@ornek.com",
+      "phone": "Telefon",
+      "phonePh": "+90 XXX XXX XXXX",
+      "subject": "Konu",
+      "subjectPh": "Konu nedir?",
+      "message": "Mesaj",
+      "messagePh": "Mesajınız...",
+      "send": "Mesajı Gönder"
     }
-  },
+  }
+  ,
   "footer": {
     "quickLinks": "Hızlı Bağlantılar",
+    "followUs": "Bizi Takip Edin",
+    "brandDescription": "Güzellik, wellness ve öz bakım için hedefiniz.",
     "contact": "İletişim",
-    "followUs": "Bizi Takip Edin"
+    "cityCountry": "İstanbul, Türkiye",
+    "allRights": "Tüm hakları saklıdır."
+  },
+  "servicesData": {
+    "hair-1": { "name": "Saç Kesimi ve Şekillendirme", "description": "Kişiselleştirilmiş stil danışmanlığı ile profesyonel saç kesimi" },
+    "hair-2": { "name": "Saç Renklendirme", "description": "Premium ürünlerle tam veya kısmi renklendirme" },
+    "hair-3": { "name": "Keratin Bakımı", "description": "İpeksi saçlar için yumuşatıcı ve besleyici bakım" },
+    "hair-4": { "name": "Balayage Işıltılar", "description": "Doğal görünümlü derinlik için el boyaması ışıltılar" },
+    "makeup-1": { "name": "Gelin Makyajı", "description": "Özel gününüz için zarif makyaj" },
+    "makeup-2": { "name": "Parti Makyajı", "description": "Etkinlikler için cesur ve göz alıcı makyaj" },
+    "makeup-3": { "name": "Doğal Makyaj", "description": "Günlük kullanım için doğal görünümlü makyaj" },
+    "makeup-4": { "name": "Kaş Şekillendirme", "description": "Profesyonel kaş tasarımı ve boya" },
+    "skin-1": { "name": "Yüz Bakımı", "description": "Derinlemesine temizlik ve yenileyici yüz bakımı" },
+    "skin-2": { "name": "Nem Terapisi", "description": "Işıldayan bir cilt için yoğun nemlendirme" },
+    "skin-3": { "name": "Mikrodermabrazyon", "description": "Pürüzsüz, parlak bir cilt için nazik peeling" },
+    "massage-1": { "name": "İsveç Masajı", "description": "Rahatlatıcı tüm vücut masajı" },
+    "massage-2": { "name": "Derin Doku Masajı", "description": "Kas gerginliği için terapötik masaj" },
+    "massage-3": { "name": "Yüz Masajı", "description": "Rahatlatıcı yüz ve boyun masajı" }
+  },
+  "staffData": {
+    "staff-1": {
+      "title": "Saç Uzmanı",
+      "specialties": ["Saç Renklendirme", "Balayage", "Keratin Bakımı", "Saç Kesimi ve Şekillendirme"],
+      "bio": "8 yıllık saç tasarım deneyimi ile Ayşe, yaratıcı renk çalışmaları ve dönüştürücü saç kesimlerinde uzmanlaşmıştır."
+    },
+    "staff-2": {
+      "title": "Makyaj Sanatçısı",
+      "specialties": ["Gelin Makyajı", "Parti Makyajı", "Kaş Şekillendirme"],
+      "bio": "Doğal güzelliği ortaya çıkarma tutkusu olan uzman makyaj sanatçısı. Gelin ve etkinlik makyajında uzmanlaşmıştır."
+    },
+    "staff-3": {
+      "title": "Cilt Bakım Uzmanı",
+      "specialties": ["Yüz Bakımı", "Nem Terapisi", "Mikrodermabrazyon"],
+      "bio": "Cildinizin doğal ışıltısını premium tedavilerle ortaya çıkarmaya adanmış sertifikalı cilt bakım uzmanı."
+    },
+    "staff-4": {
+      "title": "Masaj Terapisti",
+      "specialties": ["İsveç Masajı", "Derin Doku Masajı", "Yüz Masajı"],
+      "bio": "Müşterilerin terapötik tekniklerle rahatlamasına ve yenilenmesine yardımcı olan holistik masaj terapisti."
+    }
+  },
+  "galleryData": {
+    "ba-1": {
+      "title": "Dönüşüm Balayage",
+      "description": "Boyutsal renk için güzel balayage ışıltılar"
+    },
+    "ba-2": {
+      "title": "Gelin Işıltısı",
+      "description": "Radyant ışıltı ile zarif gelin makyajı"
+    },
+    "ba-3": {
+      "title": "Cilt Işıltısı",
+      "description": "Işıldayan ten için nem terapisi"
+    },
+    "ba-4": {
+      "title": "Pixie Kesim Şık",
+      "description": "Stil ile modern pixie kesim"
+    },
+    "ba-5": {
+      "title": "Parti Glam",
+      "description": "Gösterişli parti makyajı görünümü"
+    },
+    "ba-6": {
+      "title": "Berrak Ten",
+      "description": "Berrak, ışıldayan cilt için yüz bakımı"
+    }
+  },
+  "days": {
+    "monday": "Pazartesi",
+    "tuesday": "Salı",
+    "wednesday": "Çarşamba",
+    "thursday": "Perşembe",
+    "friday": "Cuma",
+    "saturday": "Cumartesi",
+    "sunday": "Pazar",
+    "closed": "Kapalı"
+  },
+  "common": {
+    "salonName": "Güzellik Salonu",
+    "book": "Randevu Al",
+    "back": "Geri",
+    "minutes": "dakika",
+    "name": "Ad Soyad"
   }
 }

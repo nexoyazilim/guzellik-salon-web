@@ -19,7 +19,7 @@ export const services: Service[] = [
     price: 450,
     duration: 60,
     icon: 'scissors',
-    image: 'https://images.pexels.com/photos/3962286/pexels-photo-3962286.jpeg?auto=compress&cs=tinysrgb&w=500',
+    image: 'https://images.pexels.com/photos/7755226/pexels-photo-7755226.jpeg?auto=compress&cs=tinysrgb&w=500',
   },
   {
     id: 'hair-2',
@@ -70,7 +70,7 @@ export const services: Service[] = [
     price: 600,
     duration: 60,
     icon: 'star',
-    image: 'https://images.pexels.com/photos/2897507/pexels-photo-2897507.jpeg?auto=compress&cs=tinysrgb&w=500',
+    image: 'https://images.pexels.com/photos/1904733/pexels-photo-1904733.jpeg?auto=compress&cs=tinysrgb&w=500',
   },
   {
     id: 'makeup-3',
@@ -101,7 +101,7 @@ export const services: Service[] = [
     price: 600,
     duration: 60,
     icon: 'droplet',
-    image: 'https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?auto=compress&cs=tinysrgb&w=500',
+    image: 'https://images.pexels.com/photos/3059404/pexels-photo-3059404.jpeg?auto=compress&cs=tinysrgb&w=500',
   },
   {
     id: 'skin-2',
@@ -157,8 +157,8 @@ export const services: Service[] = [
 ]
 
 export const serviceCategories = [
-  { id: 'hair', name: 'Hair', color: 'rose' },
-  { id: 'makeup', name: 'Makeup', color: 'lavender' },
-  { id: 'skincare', name: 'Skincare', color: 'blue' },
-  { id: 'massage', name: 'Massage', color: 'green' },
+  { id: 'hair', name: '', color: 'rose' }, // Name will be populated from translations
+  { id: 'makeup', name: '', color: 'lavender' }, // Name will be populated from translations
+  { id: 'skincare', name: '', color: 'blue' }, // Name will be populated from translations
+  { id: 'massage', name: '', color: 'green' }, // Name will be populated from translations
 ]

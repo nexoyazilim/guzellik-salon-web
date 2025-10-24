@@ -11,34 +11,34 @@ export const staff: StaffMember[] = [
   {
     id: 'staff-1',
     name: 'Ayşe Yılmaz',
-    title: 'Hair Specialist',
-    specialties: ['Hair Coloring', 'Balayage', 'Keratin Treatment', 'Haircut & Styling'],
+    title: '', // Will be populated from translations
+    specialties: [], // Will be populated from translations
     image: 'https://images.pexels.com/photos/1181690/pexels-photo-1181690.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop',
-    bio: 'With 8 years of experience in hair design, Ayşe specializes in creative color work and transformative haircuts.',
+    bio: '', // Will be populated from translations
   },
   {
     id: 'staff-2',
     name: 'Zeynep Demir',
-    title: 'Makeup Artist',
-    specialties: ['Bridal Makeup', 'Party Makeup', 'Eyebrow Shaping'],
+    title: '', // Will be populated from translations
+    specialties: [], // Will be populated from translations
     image: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop',
-    bio: 'Expert makeup artist with a passion for enhancing natural beauty. Specializes in bridal and event makeup.',
+    bio: '', // Will be populated from translations
   },
   {
     id: 'staff-3',
     name: 'Leyla Kaya',
-    title: 'Skin Care Specialist',
-    specialties: ['Facial Treatment', 'Hydration Therapy', 'Microdermabrasion'],
+    title: '', // Will be populated from translations
+    specialties: [], // Will be populated from translations
     image: 'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop',
-    bio: 'Certified skincare specialist dedicated to revealing your skin\'s natural radiance with premium treatments.',
+    bio: '', // Will be populated from translations
   },
   {
     id: 'staff-4',
     name: 'Fatma Erdoğan',
-    title: 'Massage Therapist',
-    specialties: ['Swedish Massage', 'Deep Tissue Massage', 'Facial Massage'],
+    title: '', // Will be populated from translations
+    specialties: [], // Will be populated from translations
     image: 'https://images.pexels.com/photos/1438761/pexels-photo-1438761.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop',
-    bio: 'Holistic massage therapist helping clients relax and rejuvenate with therapeutic techniques.',
+    bio: '', // Will be populated from translations
   },
 ]
 
