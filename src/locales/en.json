@@ -58,7 +58,8 @@
     "hair": "Hair",
     "makeup": "Makeup",
     "skincare": "Skincare",
-    "massage": "Massage"
+    "massage": "Massage",
+    "nail": "Nail Care"
   },
   "booking": {
     "title": "Book Appointment",
@@ -94,6 +95,10 @@
     "after": "After",
     "showBefore": "Show Before",
     "showAfter": "Show After"
+  },
+  "featured": {
+    "title": "Featured Gallery",
+    "subtitle": "Handpicked looks from our work"
   },
   "contact": {
     "title": "Contact Us",

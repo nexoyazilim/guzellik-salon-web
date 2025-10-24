@@ -18,7 +18,7 @@ export default function Gallery() {
   // Featured single images (provided + sourced)
   const featuredImages = [
     // Provided by user
-    { src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCJNfJi6YCFra1LtZgLJnDq1lZ1h_KZhLjnmtqCJV0nSZdLGDJvOocSfJ-BEEZOaPOBUsOJd73ONnKTZk8TPuS0TCQZj1jQKmRB911NuiHkOihnVN8sftjsUvEt4GoRdPVLYxRzszRMKu2dOs1UB2YrzEWvX26Sd6gm9WADqT8rLvqVep8HpNStinyIV2nfMIsw7pe6vI5jWdFzpgkq99xTTwd-uIG9yJHtVlivNE9KfOR0S4VRLHloDKDgqNQgKoWfo8vbJH3TuspJ', alt: 'Hair styling', category: 'hair' },
+    { src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCJNfJi6YCFra1LtZgLJnDq1lZ1h_KZhLjnmtqCJV0nSZdLGDJvOocSfJ-BEEZOaPOBUsOJd73ONnKTZk8TPuS0TCQZj1jQKmRB911NuiHkOihnVN8sftjsUvEt4GoRdPVLYxRzszRMKu2dOs1UB2YrzEWvX26Sd6gm9WADqT8rLvqVep8HpNStinyIV2nfMIsw7pe6vI5jWdFzpgkq99xTTwd-uIG9yJHtVlivNE9KfOR0S4VRLHloDKDgqNQgKoWfo8vbJH3TuspJ', alt: 'Nail care', category: 'nail' },
     { src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC3BnQEPXQvLGLkBnr50t3C2u8-ejDETZ-RHABy4S9WhcLJIJFQxW5cdxIU2PdYDYjB-ob-7f2xOKLPHoMX86EfxS-b8lt28dU39WbqkEMTBPeSPCScNJNaE37vxaaaommvc1l65jN8iZD-FbPBy7qNJ802it_EKhU__L-Ujdw4gKjDMerLOgfeYo1CDkXYQD9V62EEGNR0CD61TR4HAYgklscF37E-GWv3xLsPRipAcDNKAFlVunNEDk1HzgXtQR9qBLOEal4f2D-P', alt: 'Party makeup', category: 'makeup' },
     { src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDgRr3sWaS_LLFfd1Bdeu-xw6A4osJ1lT5NK0-ZYEMiPxBNgwTLxZ98d1eCsc-J0NQRIFaluwX-nAWmOPqywBSRhKGfutduMMHYBNVPqGKLctvu8o4jg6VUUc8hRu5MV7fk4HdD19-93FpXYjynFaYASyMl9rfbUxbh5EBcnXZ5Hyeab9CADG8B5WtwqRxfBe10hs6_5OxPn5ovzq8gRHuTB0XgL8D76M2sAu9QivNFvT95zD0mX9Kvv_E9SvvrneZ8AAkJUBQEkBKq', alt: 'Facial treatment', category: 'skincare' },
     // Sourced (Pexels/Unsplash)
@@ -57,8 +57,8 @@ export default function Gallery() {
       <section className="section-padding bg-gradient-to-br from-rose-50 to-purple-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-10">
-            <h2 className="section-title">{t('featured.title', 'Featured Gallery')}</h2>
-            <p className="text-gray-600">{t('featured.subtitle', 'Handpicked looks from our work')}</p>
+            <h2 className="section-title">{t('featured.title')}</h2>
+            <p className="text-gray-600">{t('featured.subtitle')}</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredImages.map((img, index) => (

@@ -20,9 +20,9 @@ export default function Home() {
   return (
     <div className="w-full">
       {/* Hero Section */}
-      <section className="relative min-h-[100svh] flex items-center justify-center overflow-hidden">
+      <section className="section-padding relative flex items-center justify-center overflow-hidden min-h-[80vh] md:min-h-[100vh]">
         {/* Background Image */}
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0 bg-black flex items-center justify-center">
           <img 
             src="https://images.pexels.com/photos/3993320/pexels-photo-3993320.jpeg"
             alt="Beauty Salon Interior"
@@ -41,7 +41,7 @@ export default function Home() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 text-center">
           <motion.h1
             {...fadeInUp}
-            className="text-5xl md:text-7xl font-display font-bold mb-6 text-white glassmorphism-hero drop-shadow-lg gradient-text"
+            className="text-3xl md:text-7xl font-display font-bold mb-4 md:mb-6 text-white glassmorphism-hero drop-shadow-lg gradient-text"
           >
             {t('hero.title')}
           </motion.h1>
@@ -50,7 +50,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-xl md:text-2xl text-white mb-8 max-w-2xl mx-auto glassmorphism-hero drop-shadow-lg"
+            className="text-lg md:text-2xl text-white mb-6 md:mb-8 max-w-2xl mx-auto glassmorphism-hero drop-shadow-lg"
           >
             {t('hero.subtitle')}
           </motion.p>
@@ -59,12 +59,12 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
+            className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center mb-8 md:mb-12"
           >
-            <Link to={pathFor(lng, 'booking')} className="btn-primary text-lg">
+            <Link to={pathFor(lng, 'booking')} className="btn-primary text-base md:text-lg">
               {t('hero.bookAppointment')}
             </Link>
-            <Link to={pathFor(lng, 'services')} className="btn-outline text-lg">
+            <Link to={pathFor(lng, 'services')} className="btn-outline text-base md:text-lg">
               {t('hero.exploreServices')}
             </Link>
           </motion.div>
@@ -74,19 +74,19 @@ export default function Home() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="grid grid-cols-3 gap-8 mt-16"
+            className="grid grid-cols-3 gap-4 md:gap-8 mt-8 md:mt-16"
           >
             <div className="glassmorphism-stats text-center">
-              <p className="text-3xl md:text-4xl font-bold text-white">500+</p>
-              <p className="text-white/90 mt-2">{t('stats.happyClients')}</p>
+              <p className="text-2xl md:text-4xl font-bold text-white">500+</p>
+              <p className="text-white/90 mt-1 md:mt-2 text-sm md:text-base">{t('stats.happyClients')}</p>
             </div>
             <div className="glassmorphism-stats text-center">
-              <p className="text-3xl md:text-4xl font-bold text-white">15+</p>
-              <p className="text-white/90 mt-2">{t('stats.expertStaff')}</p>
+              <p className="text-2xl md:text-4xl font-bold text-white">15+</p>
+              <p className="text-white/90 mt-1 md:mt-2 text-sm md:text-base">{t('stats.expertStaff')}</p>
             </div>
             <div className="glassmorphism-stats text-center">
-              <p className="text-3xl md:text-4xl font-bold text-white">50+</p>
-              <p className="text-white/90 mt-2">{t('stats.services')}</p>
+              <p className="text-2xl md:text-4xl font-bold text-white">50+</p>
+              <p className="text-white/90 mt-1 md:mt-2 text-sm md:text-base">{t('stats.services')}</p>
             </div>
           </motion.div>
         </div>

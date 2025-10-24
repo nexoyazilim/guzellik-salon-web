@@ -58,7 +58,8 @@
     "hair": "Saç",
     "makeup": "Makyaj",
     "skincare": "Cilt Bakımı",
-    "massage": "Masaj"
+    "massage": "Masaj",
+    "nail": "Tırnak Bakımı"
   },
   "booking": {
     "title": "Randevu Al",
@@ -94,6 +95,10 @@
     "after": "Sonrası",
     "showBefore": "Öncesini Göster",
     "showAfter": "Sonrasını Göster"
+  },
+  "featured": {
+    "title": "Öne Çıkan Galeri",
+    "subtitle": "Çalışmalarımızdan seçilen görünümler"
   },
   "contact": {
     "title": "İletişim",
