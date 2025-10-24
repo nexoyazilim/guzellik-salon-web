@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X } from 'lucide-react'
-import { beforeAfterGallery } from '../data/beforeAfter'
 import { useTranslation } from 'react-i18next'
 
 interface SelectedImage {

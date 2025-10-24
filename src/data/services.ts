@@ -19,7 +19,7 @@ export const services: Service[] = [
     price: 450,
     duration: 60,
     icon: 'scissors',
-    image: 'https://images.pexels.com/photos/7755226/pexels-photo-7755226.jpeg?auto=compress&cs=tinysrgb&w=500',
+    image: 'https://images.pexels.com/photos/7755294/pexels-photo-7755294.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
   },
   {
     id: 'hair-2',
@@ -29,7 +29,7 @@ export const services: Service[] = [
     price: 750,
     duration: 90,
     icon: 'palette',
-    image: 'https://images.pexels.com/photos/4467687/pexels-photo-4467687.jpeg?auto=compress&cs=tinysrgb&w=500',
+    image: 'https://images.pexels.com/photos/8468125/pexels-photo-8468125.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
   },
   {
     id: 'hair-3',
@@ -39,7 +39,7 @@ export const services: Service[] = [
     price: 950,
     duration: 120,
     icon: 'sparkles',
-    image: 'https://images.pexels.com/photos/3962287/pexels-photo-3962287.jpeg?auto=compress&cs=tinysrgb&w=500',
+    image: 'https://images.pexels.com/photos/3993447/pexels-photo-3993447.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
   },
   {
     id: 'hair-4',
@@ -49,7 +49,7 @@ export const services: Service[] = [
     price: 850,
     duration: 110,
     icon: 'highlighter',
-    image: 'https://images.pexels.com/photos/3962288/pexels-photo-3962288.jpeg?auto=compress&cs=tinysrgb&w=500',
+    image: 'https://images.pexels.com/photos/29548298/pexels-photo-29548298.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
   },
   // Makeup Services
   {
@@ -60,7 +60,7 @@ export const services: Service[] = [
     price: 1200,
     duration: 90,
     icon: 'heart',
-    image: 'https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?auto=compress&cs=tinysrgb&w=500',
+    image: 'https://unsplash.com/photos/y9HsMX3-mUY/download?force=true&w=800',
   },
   {
     id: 'makeup-2',
@@ -70,7 +70,7 @@ export const services: Service[] = [
     price: 600,
     duration: 60,
     icon: 'star',
-    image: 'https://images.pexels.com/photos/1904733/pexels-photo-1904733.jpeg?auto=compress&cs=tinysrgb&w=500',
+    image: 'https://images.unsplash.com/photo-1573893159776-6dc982a8432f?auto=format&fit=crop&w=800&h=600&q=80',
   },
   {
     id: 'makeup-3',
@@ -80,7 +80,7 @@ export const services: Service[] = [
     price: 400,
     duration: 45,
     icon: 'sun',
-    image: 'https://images.pexels.com/photos/3962286/pexels-photo-3962286.jpeg?auto=compress&cs=tinysrgb&w=500',
+    image: 'https://unsplash.com/photos/ijvSNGFPAiI/download?force=true&w=800',
   },
   {
     id: 'makeup-4',
@@ -90,7 +90,7 @@ export const services: Service[] = [
     price: 250,
     duration: 30,
     icon: 'eye',
-    image: 'https://images.pexels.com/photos/2897507/pexels-photo-2897507.jpeg?auto=compress&cs=tinysrgb&w=500',
+    image: 'https://images.unsplash.com/photo-1519415387722-a1c3bbef716c?auto=format&fit=crop&w=800&h=600&q=80',
   },
   // Skincare Services
   {
@@ -101,7 +101,7 @@ export const services: Service[] = [
     price: 600,
     duration: 60,
     icon: 'droplet',
-    image: 'https://images.pexels.com/photos/3059404/pexels-photo-3059404.jpeg?auto=compress&cs=tinysrgb&w=500',
+    image: 'https://unsplash.com/photos/rWwuf8yKw4Y/download?force=true&w=800',
   },
   {
     id: 'skin-2',
@@ -111,7 +111,7 @@ export const services: Service[] = [
     price: 700,
     duration: 75,
     icon: 'waves',
-    image: 'https://images.pexels.com/photos/3962287/pexels-photo-3962287.jpeg?auto=compress&cs=tinysrgb&w=500',
+    image: 'https://unsplash.com/photos/g-m8EDc4X6Q/download?force=true&w=800',
   },
   {
     id: 'skin-3',
@@ -121,7 +121,7 @@ export const services: Service[] = [
     price: 550,
     duration: 45,
     icon: 'zap',
-    image: 'https://images.pexels.com/photos/3962288/pexels-photo-3962288.jpeg?auto=compress&cs=tinysrgb&w=500',
+    image: 'https://images.pexels.com/photos/3212164/pexels-photo-3212164.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
   },
   // Massage Services
   {
@@ -132,7 +132,7 @@ export const services: Service[] = [
     price: 800,
     duration: 60,
     icon: 'hand',
-    image: 'https://images.pexels.com/photos/3807515/pexels-photo-3807515.jpeg?auto=compress&cs=tinysrgb&w=500',
+    image: 'https://unsplash.com/photos/a9pFSC8dTlo/download?force=true&w=800',
   },
   {
     id: 'massage-2',
@@ -142,7 +142,7 @@ export const services: Service[] = [
     price: 900,
     duration: 75,
     icon: 'activity',
-    image: 'https://images.pexels.com/photos/3962289/pexels-photo-3962289.jpeg?auto=compress&cs=tinysrgb&w=500',
+    image: 'https://unsplash.com/photos/YPyL2lt9eRM/download?force=true&w=800',
   },
   {
     id: 'massage-3',
@@ -152,7 +152,7 @@ export const services: Service[] = [
     price: 450,
     duration: 45,
     icon: 'smile',
-    image: 'https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?auto=compress&cs=tinysrgb&w=500',
+    image: 'https://unsplash.com/photos/PtOfbGkU3uI/download?force=true&w=800',
   },
 ]
 
