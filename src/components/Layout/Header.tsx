@@ -33,18 +33,16 @@ export default function Header() {
     navigate(pathFor(lng, routeKey), { replace: true })
   }
 
-  // theme removed
-
   return (
     <motion.header
-      className="sticky top-0 z-50 bg-white/80 backdrop-blur-md"
+      className="sticky top-0 z-50 bg-white/95 backdrop-blur-md"
       style={{
-        WebkitBackdropFilter: isScrolled ? 'blur(10px)' : 'blur(5px)',
+        WebkitBackdropFilter: isScrolled ? 'blur(5px)' : 'blur(2px)',
       }}
-      initial={{ backdropFilter: 'blur(5px)', backgroundColor: 'rgba(255, 255, 255, 0.1)' }}
+      initial={{ backdropFilter: 'blur(5px)', backgroundColor: 'rgba(255, 255, 255, 0.3)' }}
       animate={{
-        backdropFilter: isScrolled ? 'blur(10px)' : 'blur(5px)',
-        backgroundColor: isScrolled ? 'rgba(255, 255, 255, 0.15)' : 'rgba(255, 255, 255, 0.1)',
+        backdropFilter: isScrolled ? 'blur(5px)' : 'blur(2px)',
+        backgroundColor: isScrolled ? 'rgba(255, 255, 255, 0.5)' : 'rgba(255, 255, 255, 0.3)',
         boxShadow: isScrolled
           ? '0 10px 30px rgba(0, 0, 0, 0.1)'
           : '0 4px 15px rgba(0, 0, 0, 0.05)',
@@ -52,7 +50,7 @@ export default function Header() {
       transition={{ duration: 0.3, ease: 'easeInOut' }}
     >
       {/* Subtle gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-white/0 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-br from-white/30 to-white/10 pointer-events-none" />
 
       <nav className="relative max-w-7xl mx-auto px-4 py-4 flex items-center justify-between border-b border-gray-200">
         <motion.div
@@ -68,7 +66,7 @@ export default function Header() {
               <img src={import.meta.env.BASE_URL + 'favicon.svg'} alt="Logo" className="w-8 h-8" />
             </motion.div>
             <motion.span
-              className="hidden md:inline font-display font-bold text-2xl text-rose-700"
+              className="hidden lg:inline font-display font-bold text-2xl text-rose-700"
               initial={{ opacity: 0.7 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.1 }}
@@ -80,7 +78,7 @@ export default function Header() {
 
         {/* Desktop Navigation */}
         <motion.div
-          className="hidden md:flex items-center gap-8"
+          className="hidden lg:flex items-center gap-8"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
@@ -98,7 +96,7 @@ export default function Header() {
             >
               <Link
                 to={link.to}
-                className="text-gray-700 font-semibold transition-colors duration-300 relative group"
+                className="text-gray-700 font-semibold transition-colors duration-300 relative group drop-shadow-sm"
               >
                 {link.label}
                 <motion.span
@@ -121,11 +119,11 @@ export default function Header() {
             </Link>
           </motion.div>
           {/* Language Switcher */}
-          <div className="hidden md:flex items-center gap-3">
+          <div className="hidden lg:flex items-center gap-3">
             <div className="flex items-center gap-1 bg-white/20 rounded-lg p-1 backdrop-blur-md">
               <motion.button
                 onClick={() => changeLanguage('tr')}
-                className={`px-3 py-1 rounded-md text-sm font-medium transition-all duration-200 ${
+                className={`px-3 py-1 rounded-md text-sm font-medium transition-all duration-200 drop-shadow-sm ${
                   i18n.language === 'tr'
                     ? 'bg-rose-500 text-white shadow-md'
                     : 'text-gray-600 hover:text-gray-800'
@@ -137,7 +135,7 @@ export default function Header() {
               </motion.button>
               <motion.button
                 onClick={() => changeLanguage('en')}
-                className={`px-3 py-1 rounded-md text-sm font-medium transition-all duration-200 ${
+                className={`px-3 py-1 rounded-md text-sm font-medium transition-all duration-200 drop-shadow-sm ${
                   i18n.language === 'en'
                     ? 'bg-rose-500 text-white shadow-md'
                     : 'text-gray-600 hover:text-gray-800'
@@ -154,7 +152,7 @@ export default function Header() {
         {/* Mobile Menu Button */}
         <motion.button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="md:hidden p-2 hover:bg-white/20 rounded-lg transition-colors backdrop-blur-md"
+          className="lg:hidden p-2 hover:bg-white/20 rounded-lg transition-colors backdrop-blur-md"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
         >
@@ -173,7 +171,7 @@ export default function Header() {
         initial={{ opacity: 0, height: 0 }}
         animate={{ opacity: isMenuOpen ? 1 : 0, height: isMenuOpen ? 'auto' : 0 }}
         transition={{ duration: 0.3 }}
-        className="md:hidden overflow-hidden"
+        className="lg:hidden overflow-hidden"
       >
         <div className="backdrop-blur-xl bg-white/40 border-b border-white/20 px-4 py-4 space-y-2">
           {[
